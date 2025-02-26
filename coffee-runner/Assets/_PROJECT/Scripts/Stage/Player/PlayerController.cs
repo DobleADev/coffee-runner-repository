@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,17 +15,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _baseTemperature = 0;
     [SerializeField] private float _heatSupported = 100;
     [SerializeField] private float _coldSupported = -100;
+    [SerializeField] private float _reviveInvencibiltyCooldown = 2;
     [SerializeField] bool _doubleJump;
     [SerializeField] private List<ActiveStatusEffect> _activeEffects = new List<ActiveStatusEffect>();
     [SerializeField] private List<PermanentEffectSO> _activePermanentEffects = new List<PermanentEffectSO>();
+    [SerializeField] private UnityEvent _onRevive;
+    [SerializeField] private UnityEvent _onInvencibilityEnd;
     [SerializeField] private PlayerDeathEvents _deathEvents;
     #endregion
 
     #region Private Variables
     private float _currentRunSpeed;
     float _currentTemperature;
+    float _currentInvencibilityTime;
     float _currentBufferedTemperature;
     bool _isTemperatureCap;
+    Coroutine _invencibilityCoroutine;
     #endregion
 
     #region Properties
@@ -32,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public float Temperature => _currentTemperature;
     public float EffectRunSpeed { get; private set; }
     public float EffectTemperature { get { return _currentBufferedTemperature; } set {_currentBufferedTemperature = value;} }
+    public float InvencibilityTime { get { return _currentInvencibilityTime; } set {_currentInvencibilityTime = value;} }
     public List<ActiveStatusEffect> activeEffects => _activeEffects;
     public List<PermanentEffectSO> activePermanentEffects => _activePermanentEffects;
     public PlayerDeathEvents DeathEvents { get { return _deathEvents; } set { _deathEvents = value; } }
@@ -40,6 +47,8 @@ public class PlayerController : MonoBehaviour
     #region Private Methods
     void Update()
     {
+        _currentRunSpeed = _baseRunSpeed + EffectRunSpeed;
+        _currentTemperature = _baseTemperature + _currentBufferedTemperature;
         if (_currentTemperature >= _heatSupported)
         {
             _currentTemperature = _heatSupported;
@@ -50,8 +59,6 @@ public class PlayerController : MonoBehaviour
             _currentTemperature = _coldSupported;
             _deathEvents.onFrozedDeath?.Invoke();
         }
-        _currentRunSpeed = _baseRunSpeed + EffectRunSpeed;
-        _currentTemperature = _baseTemperature + _currentBufferedTemperature;
 
         for (int i = 0; i < _activeEffects.Count; i++)
         {
@@ -147,9 +154,38 @@ public class PlayerController : MonoBehaviour
         _deathEvents.onAnyDeath?.Invoke();
     }
 
-    public void SelfDestroy()
+    public void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        // Destroy(gameObject);
+    }
+
+    public void Revive()
+    {
+        for (int i = 0; i < _activeEffects.Count; i++)
+        {
+            var effect = _activeEffects[i];
+            // if (effect == null) continue;
+            RemoveEffect(effect);
+        }
+        for (int i = 0; i < _activePermanentEffects.Count; i++)
+        {
+            var effect = _activePermanentEffects[i];
+            // if (effect == null) continue;
+            RemoveEffect(effect);
+        }
+        _currentBufferedTemperature = 0;
+        _currentRunSpeed = _baseRunSpeed + EffectRunSpeed;
+        _currentTemperature = _baseTemperature + _currentBufferedTemperature;
+        _currentInvencibilityTime = _reviveInvencibiltyCooldown;
+        gameObject.SetActive(true);
+        _invencibilityCoroutine = StartCoroutine(InvencibilityCoroutine());
+    }
+
+    IEnumerator InvencibilityCoroutine()
+    {
+        yield return new WaitForSeconds(_reviveInvencibiltyCooldown);
+        _currentInvencibilityTime = 0;
     }
     #endregion
 }

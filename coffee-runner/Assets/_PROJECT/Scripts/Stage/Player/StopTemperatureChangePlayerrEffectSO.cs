@@ -13,7 +13,7 @@ public class FreezeTemperatureEffectSO : DurationEffectSO
     //      // Desactiva cambios de temperatura base
     // }
 
-    public override void Update(PlayerController player)
+    public override void UpdateEffect(PlayerController player)
     {
         // Mantiene la temperatura congelada
         player.CapTemperature();

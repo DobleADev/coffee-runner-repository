@@ -12,7 +12,7 @@ public abstract class DurationEffectSO : PlayerEffectSO
 {
     public float duration;
     public virtual void Remove(PlayerController player) {}
-    public virtual void Update(PlayerController player) {}
+    public virtual void UpdateEffect(PlayerController player) {}
 }
 
 public abstract class PermanentEffectSO : DurationEffectSO {}
@@ -36,7 +36,7 @@ public class ActiveStatusEffect
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            effect.Update(player);
+            effect.UpdateEffect(player);
         }
         else
         {

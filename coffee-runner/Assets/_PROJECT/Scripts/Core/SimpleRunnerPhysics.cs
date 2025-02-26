@@ -81,9 +81,9 @@ public class SimpleRunnerPhysics : MonoBehaviour
         }
     }
 
-    [Header("Slope Handling")]
-    [SerializeField] float slopeCheckDistance = 0.5f;
-    [SerializeField] float maxSlopeAngle = 45f;
+    // [Header("Slope Handling")]
+    // [SerializeField] float slopeCheckDistance = 0.5f;
+    // [SerializeField] float maxSlopeAngle = 45f;
 
     void FixedUpdate()
     {

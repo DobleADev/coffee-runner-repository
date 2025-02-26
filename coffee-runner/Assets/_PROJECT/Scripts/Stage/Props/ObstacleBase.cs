@@ -10,15 +10,20 @@ public abstract class ObstacleBase : MonoBehaviour
         }
     }
 
-    protected virtual void OnPlayerCrash(PlayerController player) {}
+    protected virtual void OnPlayerCrash(PlayerController player) { }
 }
 
 public abstract class ObstacleInstakill : ObstacleBase, IDeathStrategy<PlayerController>
 {
+    [SerializeField] bool _forceDeath = false;
     public abstract void DealDeath(PlayerController entity);
 
     protected override void OnPlayerCrash(PlayerController player)
     {
+        if (player.InvencibilityTime > 0 && !_forceDeath)
+        {
+            return;
+        }
         DealDeath(player);
     }
 }

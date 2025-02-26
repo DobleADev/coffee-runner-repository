@@ -344,6 +344,7 @@ MonoBehaviour:
   _baseTemperature: 0
   _heatSupported: 100
   _coldSupported: -100
+  _reviveInvencibiltyCooldown: 2
   _doubleJump: 0
   _activeEffects: []
   _activePermanentEffects: []
@@ -365,7 +366,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8400944967657083627}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: SelfDestroy
+          m_MethodName: Die
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -565,8 +566,6 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
-  slopeCheckDistance: 2
-  maxSlopeAngle: 45
 --- !u!50 &9146739828369060693
 Rigidbody2D:
   serializedVersion: 5

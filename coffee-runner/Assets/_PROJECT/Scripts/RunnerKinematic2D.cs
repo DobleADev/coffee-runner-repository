@@ -76,21 +76,21 @@ public class RunnerKinematic2D : KinematicSupport2D
     [SerializeField] float _jumpSpeed = 6f;
     [SerializeField] float _gravityScale = 1f;
     [SerializeField] float _groundCheckDistance = 0.25f;
-    [SerializeField] float _footDistanceFromCenter = 1f;
-    [SerializeField] float _snapToGroundDistance = 0.2f;
+    // [SerializeField] float _footDistanceFromCenter = 1f;
+    // [SerializeField] float _snapToGroundDistance = 0.2f;
     const float _slopeSpeedMultiplier = 1.666667f; // Ajuste para compensar pendientes
     public bool isGrounded = false;
     private Vector2 _currentVelocity;
     [Header("Ground Anchoring")]
     [SerializeField] float _maxSlopeAngle = 45f; // Ángulo máximo de pendiente pisable
-    [SerializeField] float _groundSnapForce = 5f; // Fuerza de ajuste al suelo
+    // [SerializeField] float _groundSnapForce = 5f; // Fuerza de ajuste al suelo
     private Vector2 _groundNormal = Vector2.up;
 
     protected override Vector2 ComputeVelocity()
     {
         ApplyGravity();
         ApplyGroundSnapping();
-        
+
         return Time.deltaTime * _currentVelocity;
     }
 
@@ -115,12 +115,12 @@ public class RunnerKinematic2D : KinematicSupport2D
 
     void ApplyGroundSnapping()
     {
-        if(isGrounded)
+        if (isGrounded)
         {
             // Calcular dirección de la pendiente y ajustar velocidad
             Vector2 slopeDirection = new Vector2(_groundNormal.y, -_groundNormal.x).normalized;
             // float slopeAngleFactor = 1f / Mathf.Abs(slopeDirection.x);
-            
+
             _currentVelocity.x = Input.GetAxisRaw("Horizontal") * _moveSpeed * slopeDirection.x * _slopeSpeedMultiplier;
             _currentVelocity.y = Input.GetAxisRaw("Horizontal") * _moveSpeed * slopeDirection.y * _slopeSpeedMultiplier;
 
@@ -133,12 +133,10 @@ public class RunnerKinematic2D : KinematicSupport2D
     protected override Vector2 ComputeProjection(Vector2 vector, Vector2 planeNormal)
     {
         float slopeAngle = Vector2.Angle(planeNormal, Vector2.up);
-        
-        
-            Vector2 projection = vector - Vector2.Dot(vector, planeNormal) * planeNormal;
-            return (projection.magnitude + (vector - projection).magnitude) * projection.normalized;
+        Vector2 projection = vector - Vector2.Dot(vector, planeNormal) * planeNormal;
+        return (projection.magnitude + (vector - projection).magnitude) * projection.normalized;
 
-        return base.ComputeProjection(vector, planeNormal);
+        // return base.ComputeProjection(vector, planeNormal);
     }
 
     private new void FixedUpdate()
@@ -150,12 +148,12 @@ public class RunnerKinematic2D : KinematicSupport2D
 
     void SnapToGround()
     {
-        if(!isGrounded) return;
+        if (!isGrounded) return;
 
         RaycastHit2D[] hits = new RaycastHit2D[1];
         float checkDistance = _skinWidth + 0.5f; // Rango de ajuste
-        
-        if(_body.Cast(Vector2.down, _filter, hits, checkDistance) > 0)
+
+        if (_body.Cast(Vector2.down, _filter, hits, checkDistance) > 0)
         {
             // Ajuste fino de posición
             float snapDistance = hits[0].distance - _skinWidth;
@@ -169,15 +167,15 @@ public class RunnerKinematic2D : KinematicSupport2D
         RaycastHit2D[] hits = new RaycastHit2D[1];
         float distance = _skinWidth + _groundCheckDistance - (Time.deltaTime * _currentVelocity.y);
         // float distance = (_skinWidth + _groundCheckDistance) * Mathf.Clamp01(1 - Mathf.Sign(_currentVelocity.y));
-        
+
         int hitCount = _body.Cast(
-            Vector2.down, 
-            _filter, 
-            hits, 
+            Vector2.down,
+            _filter,
+            hits,
             distance
         );
 
-        isGrounded = hitCount > 0 && 
+        isGrounded = hitCount > 0 &&
                     Vector2.Angle(hits[0].normal, Vector2.up) <= _maxSlopeAngle;
     }
 }

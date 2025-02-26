@@ -6,7 +6,7 @@ public class TemperatureBoostPlayerEffectSO : DurationEffectSO
 {
     public float temperatureChangeRate;
 
-    public override void Update(PlayerController player)
+    public override void UpdateEffect(PlayerController player)
     {
         player.ApplyTemperature(temperatureChangeRate, Time.deltaTime);
     }
