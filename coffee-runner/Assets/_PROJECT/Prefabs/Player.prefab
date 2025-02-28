@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 47010831991004920}
   serializedVersion: 2
   m_LocalRotation: {x: -5.551115e-17, y: -0.0000000032011365, z: -1.326322e-19, w: 1}
-  m_LocalPosition: {x: 4.000001, y: 1.5999999, z: -10}
+  m_LocalPosition: {x: 4, y: 1.6000004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,7 +250,7 @@ Transform:
   m_GameObject: {fileID: 2644557903083259008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.99, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,6 +348,12 @@ MonoBehaviour:
   _doubleJump: 0
   _activeEffects: []
   _activePermanentEffects: []
+  _onRevive:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInvencibilityEnd:
+    m_PersistentCalls:
+      m_Calls: []
   _deathEvents:
     onAnyDeath:
       m_PersistentCalls:
@@ -555,9 +561,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   groundCheck: {fileID: 5234182328273679070}
-  groundCheckRadius: 0.1
+  groundCheckRadius: 0.5
   _gravityScale: 3
   _maxFallHeight: 18
+  _snapThreshold: 0.5
   wallSlideSpeed: 1
   wallJumpForce: 15
   leftWallCheck: {fileID: 2687849614790253624}
@@ -566,6 +573,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpInputBuffer: 0.2
 --- !u!50 &9146739828369060693
 Rigidbody2D:
   serializedVersion: 5
@@ -603,7 +611,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c9a5241c2b092e44eb40788f429ee2c4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

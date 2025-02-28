@@ -15,8 +15,10 @@ public class SimpleRunnerPhysics : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] float _gravityScale = 3;
     [SerializeField] float _maxFallHeight = 10f;
+    // [SerializeField] float _snapThreshold = 0.25f;
 
     bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    // bool IsGrounded() => rb.linearVelocityY <= 0 && Physics2D.CircleCast(groundCheck.position, groundCheckRadius, Vector2.down, isGrounded ? _snapThreshold : Mathf.Max(0, Time.deltaTime * -rb.linearVelocityY), groundLayer);
 
     public int maxAirJumps { get; set; }
     private int airJumpsRemaining;
@@ -26,8 +28,8 @@ public class SimpleRunnerPhysics : MonoBehaviour
     [SerializeField] float wallJumpForce = 15f;
     [SerializeField] Transform leftWallCheck, rightWallCheck;
     [SerializeField] float wallCheckDistance = 0.5f;
-
     [SerializeField] LayerMask platformLayer;
+    public bool isGrounded { get; private set; }
 
     bool IsOnWall()
     {
@@ -52,9 +54,12 @@ public class SimpleRunnerPhysics : MonoBehaviour
         }
     }
 
+    [SerializeField] float jumpInputBuffer = 0.1f;
+    float jumpInputBufferTimer = 0;
+
     void Update()
     {
-        if (IsGrounded())
+        if (isGrounded)
         {
             if (rb.linearVelocityY < -groundCheckRadius) rb.linearVelocityY = -groundCheckRadius;
             airJumpsRemaining = maxAirJumps;
@@ -62,10 +67,17 @@ public class SimpleRunnerPhysics : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (IsGrounded() || airJumpsRemaining > 0)
+            jumpInputBufferTimer = jumpInputBuffer;
+        }
+
+        if (jumpInputBufferTimer > 0)
+        {
+            jumpInputBufferTimer -= Time.deltaTime;
+            if (isGrounded || airJumpsRemaining > 0)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                if (!IsGrounded()) airJumpsRemaining--;
+                if (!isGrounded) airJumpsRemaining--;
+                jumpInputBufferTimer = 0;
             }
         }
 
@@ -87,6 +99,7 @@ public class SimpleRunnerPhysics : MonoBehaviour
 
     void FixedUpdate()
     {
+        isGrounded = IsGrounded();
         Vector2 moveDirection = Vector2.right;
         // if (IsGrounded())
         // {
@@ -103,4 +116,23 @@ public class SimpleRunnerPhysics : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("OneWayPlatform"), ignorePlatforms);
     }
+
+    // void OnDrawGizmos()
+    // {
+    //     if (jumpInputBufferTimer == 0 && rb.linearVelocityY > 0)
+    //     {
+    //         Gizmos.color = Color.green;
+    //         Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);
+    //     }
+    //     else if (isGrounded)
+    //     {
+    //         Gizmos.color = Color.yellow;
+    //         Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);
+    //     }
+    //     else
+    //     {
+    //         Gizmos.color = Color.gray;
+    //         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    //     }
+    // }
 }
