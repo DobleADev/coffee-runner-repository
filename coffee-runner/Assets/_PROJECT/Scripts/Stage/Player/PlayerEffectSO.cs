@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class PlayerEffectSO : ScriptableObject
 {
     public string effectName;
+    public string description;
+    [Min(0)] public float useCooldown;
     public virtual void Apply(PlayerController player) {}
 }
 

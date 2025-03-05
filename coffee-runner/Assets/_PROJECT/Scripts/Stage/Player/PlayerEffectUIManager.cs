@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class PlayerEffectUIManager : MonoBehaviour
 {
     public PlayerController player;
+    public PlayerEquippedPowerups equippedPowerups;
     public Text playerHealthText;
     public Slider playerHealthBar;
     public TMP_Text environmentTemperature;
     public PlayerEffectUIItem effectUIPrefab;
     public Transform effectUIParent;
+    public PlayerEquippedEffectUIItem equippedPowerupsPrefab;
+    public Transform equippedPowerupsParent;
 
     private List<GameObject> effectUIElements = new List<GameObject>();
+    private List<GameObject> equippedEffectUIElements = new List<GameObject>();
 
     void Update()
     {
@@ -65,4 +69,27 @@ public class PlayerEffectUIManager : MonoBehaviour
             effectUIElements.Add(newEffectUI.gameObject);
         }
     }
+
+    public void UpdateEquippedEffectUI()
+    {
+        foreach (var effectUI in equippedEffectUIElements)
+        {
+            Destroy(effectUI);
+        }
+        equippedEffectUIElements.Clear();
+
+        foreach (var effect in equippedPowerups.powerups)
+        {
+            if (effect is PermanentEffectSO) continue;
+            PlayerEquippedEffectUIItem newEffectUI = Instantiate(equippedPowerupsPrefab, equippedPowerupsParent);
+            // TimeSpan time = TimeSpan.FromSeconds(effect.timeRemaining);
+            // newEffectUI.UpdateContents(effect.effect.effectName, time.ToString(@"mm\:ss"));
+            newEffectUI.equippedEffect = effect;
+            newEffectUI.player = player;
+            newEffectUI.UpdateContents(effect.effectName);
+            equippedEffectUIElements.Add(newEffectUI.gameObject);
+        }
+    }
+
+    
 }

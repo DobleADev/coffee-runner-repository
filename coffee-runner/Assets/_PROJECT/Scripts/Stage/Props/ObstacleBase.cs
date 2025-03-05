@@ -20,7 +20,7 @@ public abstract class ObstacleInstakill : ObstacleBase, IDeathStrategy<PlayerCon
 
     protected override void OnPlayerCrash(PlayerController player)
     {
-        if (player.InvencibilityTime > 0 && !_forceDeath)
+        if ((player.InvencibilityTime > 0 || player.CurrentShields > 0) && !_forceDeath)
         {
             return;
         }

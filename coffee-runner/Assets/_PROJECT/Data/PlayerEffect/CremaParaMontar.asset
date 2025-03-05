@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f5b4d6f770dd14d91330cdf5c4b8d7, type: 3}
-  m_Name: CandleUp
+  m_Script: {fileID: 11500000, guid: 215d6ecedf0e99c41b0ff982391b5872, type: 3}
+  m_Name: CremaParaMontar
   m_EditorClassIdentifier: 
-  effectName: Candle Up!
-  duration: 3
-  temperatureChangeRate: 20
+  effectName: Crema Para Montar
+  description: reduce ligeramente la temperatura de golpe
+  useCooldown: 0.5
+  temperature: -10

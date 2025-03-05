@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _heatSupported = 100;
     [SerializeField] private float _coldSupported = -100;
     [SerializeField] private float _reviveInvencibiltyCooldown = 2;
+    [SerializeField] private int _currentShields;
     [SerializeField] bool _doubleJump;
     [SerializeField] private List<ActiveStatusEffect> _activeEffects = new List<ActiveStatusEffect>();
     [SerializeField] private List<PermanentEffectSO> _activePermanentEffects = new List<PermanentEffectSO>();
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public float EffectRunSpeed { get; private set; }
     public float EffectTemperature { get { return _currentBufferedTemperature; } set {_currentBufferedTemperature = value;} }
     public float InvencibilityTime { get { return _currentInvencibilityTime; } set {_currentInvencibilityTime = value;} }
+    public int CurrentShields { get { return _currentShields; } set {_currentShields = value;} }
     public List<ActiveStatusEffect> activeEffects => _activeEffects;
     public List<PermanentEffectSO> activePermanentEffects => _activePermanentEffects;
     public PlayerDeathEvents DeathEvents { get { return _deathEvents; } set { _deathEvents = value; } }
@@ -131,6 +133,10 @@ public class PlayerController : MonoBehaviour
                 _activeEffects.Add(newActiveEffect);
             }
             
+        }
+        else
+        {
+            effect.Apply(this);
         }
     }
 
