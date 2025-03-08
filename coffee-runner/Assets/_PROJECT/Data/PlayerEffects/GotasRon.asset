@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
+  m_Name: GotasRon
+  m_EditorClassIdentifier: 
+  effectName: Gotas de Ron
+  description: gotas de ron, aumenta la temperatura y otorga un escudo contra obstaculos
+    bajos que absorve 1 impacto durante 10 segundos
+  type: 0
+  level: 1
+  duration:
+    _baseValue: 3
+    _upgrades: []
+  useCooldown:
+    _baseValue: 10
+    _upgrades: []
+  properties:
+  - {fileID: 11400000, guid: 3b1326dc89fd2f84b8dd43e13a03d068, type: 2}
+  - {fileID: 11400000, guid: 8a40ae854f6e3ad4ba79360b3c830b1f, type: 2}

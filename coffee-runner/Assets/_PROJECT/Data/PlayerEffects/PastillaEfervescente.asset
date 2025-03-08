@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
+  m_Name: PastillaEfervescente
+  m_EditorClassIdentifier: 
+  effectName: Pastilla Efervescente
+  description: reduce la temperatura significativamente, si la temperatura actual
+    es caliente, digase > 10, agarra el exedente de la temperatura caliente y la
+    reduce a la mitad
+  type: 0
+  level: 1
+  duration:
+    _baseValue: 0
+    _upgrades: []
+  useCooldown:
+    _baseValue: 0
+    _upgrades: []
+  properties:
+  - {fileID: 11400000, guid: 140a631a19143444b9f59e9d1d717214, type: 2}
+  - {fileID: 11400000, guid: f65424e8b4e4e5842b21c6010d10e7da, type: 2}

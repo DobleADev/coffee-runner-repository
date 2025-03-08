@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f1ccde117a5f54fafd2d6a00d0a389, type: 3}
+  m_Script: {fileID: 11500000, guid: 173bdfd2d0c1ac149bded8f3081d3097, type: 3}
   m_Name: ShopPowerups
   m_EditorClassIdentifier: 
   powerups:
-  - {fileID: 11400000, guid: 95dad0b0b2a2cdb4aa84fdf3991113b1, type: 2}
-  - {fileID: 11400000, guid: 839d27512b72ae44388cad44812fc004, type: 2}
-  - {fileID: 11400000, guid: 1142127863797694ab62ba84dff5edc5, type: 2}
+  - {fileID: 11400000, guid: a998382e5933e99468d8ba26e91a083c, type: 2}
+  - {fileID: 11400000, guid: 586b1f8ca259d214d813cbd7f9cca55b, type: 2}
+  - {fileID: 11400000, guid: abb7780d8964699428b60f3fd2594be3, type: 2}
+  - {fileID: 11400000, guid: 85bc9cf210a313e4390d5efb35d4019a, type: 2}
+  - {fileID: 11400000, guid: 7553cda13f08693479d2ec8ef240d77e, type: 2}
+  - {fileID: 11400000, guid: d26d8c9fdc9c00843a55723d92197aee, type: 2}
+  - {fileID: 11400000, guid: 77caeea069991404da1a9e84675d55be, type: 2}

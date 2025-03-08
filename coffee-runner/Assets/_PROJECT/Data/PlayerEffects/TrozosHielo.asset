@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
+  m_Name: TrozosHielo
+  m_EditorClassIdentifier: 
+  effectName: Trozos de Hielo
+  description: reduce la temperatura de golpe y aplica un efecto de - 10% en la velocidad
+    durante 3 segundos
+  type: 0
+  level: 1
+  duration:
+    _baseValue: 3
+    _upgrades: []
+  useCooldown:
+    _baseValue: 0
+    _upgrades: []
+  properties:
+  - {fileID: 11400000, guid: 36ef3244cb31eb449bfa815e2a91d944, type: 2}
+  - {fileID: 11400000, guid: 426ce2d460560c24ebfbb976a6c165ae, type: 2}

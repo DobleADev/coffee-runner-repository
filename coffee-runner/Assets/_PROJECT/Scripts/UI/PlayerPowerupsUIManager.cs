@@ -1,12 +1,11 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerPowerupsUIManager : MonoBehaviour
 {
-    public PlayerEquippedPowerups availablePowerUps; // List of all equippable power-ups
-    public PlayerEquippedPowerups powerups; // Scriptable object for equipped power-ups
+    public PlayerStatusEffectContainerSO availablePowerUps; // List of all equippable power-ups
+    public PlayerStatusEffectContainerSO powerups; // Scriptable object for equipped power-ups
 
     public GameObject powerUpButtonPrefab; // Prefab for equippable power-up buttons
     public Transform powerUpListContent; // Parent transform for the equippable power-up list
@@ -23,7 +22,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
     public Button equipButton;
     public Button dequipButton;
 
-    private PlayerEffectSO selectedPowerUp;
+    private PlayerStatusEffectSO selectedPowerUp;
 
     void Start()
     {
@@ -44,7 +43,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
         }
     }
 
-    public void ShowPowerUpDetails(PlayerEffectSO powerUp)
+    public void ShowPowerUpDetails(PlayerStatusEffectSO powerUp)
     {
         selectedPowerUp = powerUp;
         powerUpNameText.text = powerUp.effectName;
@@ -71,7 +70,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
         }
     }
 
-    public void DequipPowerUp(PlayerEffectSO powerUp)
+    public void DequipPowerUp(PlayerStatusEffectSO powerUp)
     {
         if (powerups.powerups.Contains(powerUp))
         {
@@ -96,6 +95,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
         // Create new buttons for each equipped power-up
         foreach (var powerUp in powerups.powerups)
         {
+            if (powerUp.type == PlayerStatusEffectSO.EffectType.Permanent) continue;
             GameObject buttonObj = Instantiate(equippedPowerUpButtonPrefab, equippedPowerUpList);
             PlayerPowerupsUIEquippedItem button = buttonObj.GetComponent<PlayerPowerupsUIEquippedItem>();
             button.SetUp(powerUp, this);

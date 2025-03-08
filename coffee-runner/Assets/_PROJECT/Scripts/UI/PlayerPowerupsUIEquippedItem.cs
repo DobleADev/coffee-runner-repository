@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class PlayerPowerupsUIEquippedItem : MonoBehaviour
 {
     public TMP_Text label;
-    public PlayerEffectSO powerUp;
+    public PlayerStatusEffectSO powerUp;
     public PlayerPowerupsUIManager powerUpWindow; // Reference to the main window script
 
-    public void SetUp(PlayerEffectSO powerUp, PlayerPowerupsUIManager powerUpWindow)
+    public void SetUp(PlayerStatusEffectSO powerUp, PlayerPowerupsUIManager powerUpWindow)
     {
         this.powerUp = powerUp;
         this.powerUpWindow = powerUpWindow;

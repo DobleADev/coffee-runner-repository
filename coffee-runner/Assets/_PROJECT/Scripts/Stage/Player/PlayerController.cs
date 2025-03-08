@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +15,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _heatSupported = 100;
     [SerializeField] private float _coldSupported = -100;
     [SerializeField] private float _reviveInvencibiltyCooldown = 2;
-    [SerializeField] private int _currentShields;
+    [SerializeField] private List<SlipShieldStatusEffectSO> _currentSlipShields = new List<SlipShieldStatusEffectSO>();
+    [SerializeField] private List<StumbleShieldStatusEffectSO> _currentStumbleShields = new List<StumbleShieldStatusEffectSO>();
     [SerializeField] bool _doubleJump;
-    [SerializeField] private List<ActiveStatusEffect> _activeEffects = new List<ActiveStatusEffect>();
-    [SerializeField] private List<PermanentEffectSO> _activePermanentEffects = new List<PermanentEffectSO>();
+    [SerializeField] private List<ActiveEffect> _activeEffects = new List<ActiveEffect>();
+    [SerializeField] private List<PlayerStatusEffectSO> _activePermanentEffects = new List<PlayerStatusEffectSO>();
     [SerializeField] private UnityEvent _onRevive;
     [SerializeField] private UnityEvent _onInvencibilityEnd;
     [SerializeField] private PlayerDeathEvents _deathEvents;
@@ -29,21 +29,28 @@ public class PlayerController : MonoBehaviour
     private float _currentRunSpeed;
     float _currentTemperature;
     float _currentInvencibilityTime;
+    List<InvencibilityStatusEffectSO> _currentInvencibilityChances = new List<InvencibilityStatusEffectSO>();
     float _currentBufferedTemperature;
     bool _isTemperatureCap;
     Coroutine _invencibilityCoroutine;
     #endregion
 
     #region Properties
+    public float BaseSpeed => _baseRunSpeed;
     public float RunSpeed => _currentRunSpeed;
     public float Temperature => _currentTemperature;
     public float EffectRunSpeed { get; private set; }
-    public float EffectTemperature { get { return _currentBufferedTemperature; } set {_currentBufferedTemperature = value;} }
-    public float InvencibilityTime { get { return _currentInvencibilityTime; } set {_currentInvencibilityTime = value;} }
-    public int CurrentShields { get { return _currentShields; } set {_currentShields = value;} }
-    public List<ActiveStatusEffect> activeEffects => _activeEffects;
-    public List<PermanentEffectSO> activePermanentEffects => _activePermanentEffects;
+    public float EnvironmentTemperature { get; set; }
+    public float EffectTemperature { get { return _currentBufferedTemperature; } set { _currentBufferedTemperature = value; } }
+    public float InvencibilityTime { get { return _currentInvencibilityTime; } set { _currentInvencibilityTime = value; } }
+    public List<InvencibilityStatusEffectSO> InvencibilityChances { get { return _currentInvencibilityChances; } set { _currentInvencibilityChances = value; } }
+    public List<SlipShieldStatusEffectSO> CurrentSlipShields { get { return _currentSlipShields; } set { _currentSlipShields = value; } }
+    public List<StumbleShieldStatusEffectSO> CurrentStumbleShields { get { return _currentStumbleShields; } set { _currentStumbleShields = value; } }
+    public List<ActiveEffect> activeEffects => _activeEffects;
+    public List<PlayerStatusEffectSO> activePermanentEffects => _activePermanentEffects;
     public PlayerDeathEvents DeathEvents { get { return _deathEvents; } set { _deathEvents = value; } }
+    // public List<ActiveEffect> activeEffects = new List<ActiveEffect>();
+
     #endregion
 
     #region Private Methods
@@ -62,27 +69,29 @@ public class PlayerController : MonoBehaviour
             _deathEvents.onFrozedDeath?.Invoke();
         }
 
-        for (int i = 0; i < _activeEffects.Count; i++)
+        foreach (var effect in _activeEffects)
         {
-            var effect = _activeEffects[i];
-            // if (effect == null) continue;
-            effect.UpdateEffect(this);
-        }
-
-        for (int i = 0; i < _activePermanentEffects.Count; i++)
-        {
-            var effect = _activePermanentEffects[i];
-            // if (effect == null) continue;
-            effect.Apply(this);
+            foreach (var effectData in effect.effect.properties)
+            {
+                effectData.EachFrame(this);
+            }
         }
 
         foreach (var effect in _activePermanentEffects)
         {
-            effect.Apply(this); // Se aplican en cada frame
+            foreach (var effectData in effect.properties)
+            {
+                effectData.EachFrame(this);
+            }
         }
-        
+        _currentBufferedTemperature += EnvironmentTemperature * Time.deltaTime;
+
+        _currentInvencibilityTime -= Time.deltaTime;
+        _currentInvencibilityTime = Mathf.Max(0, _currentInvencibilityTime);
+
         _physics.moveSpeed = _currentRunSpeed;
         _physics.maxAirJumps = _doubleJump ? 1 : 0;
+        UpdateActiveEffectDurations(); // Actualiza las duraciones de los efectos activos 
     }
 
     void LateUpdate()
@@ -102,57 +111,113 @@ public class PlayerController : MonoBehaviour
     #region Public Methods
     public void AddSpeed(float amount) { EffectRunSpeed += amount; }
     public void RemoveSpeed(float amount) { EffectRunSpeed -= amount; }
-    public void ApplyTemperature(float amount, float delta = 1) 
-    { 
+    public void ApplyTemperature(float amount, float delta = 1)
+    {
         if (_isTemperatureCap)
         {
             return;
         }
-        _currentBufferedTemperature += delta * amount; 
+        _currentBufferedTemperature += delta * amount;
     }
     public void CapTemperature() { _isTemperatureCap = true; }
 
-    public void ApplyEffect(PlayerEffectSO effect)
+    private void UpdateActiveEffectDurations()
     {
-        if (effect is PermanentEffectSO) // TEMP
-        {
-            _activePermanentEffects.Add((PermanentEffectSO) effect);
-        }
-        else if (effect is DurationEffectSO)
-        {
-            ActiveStatusEffect existingEffect = _activeEffects.Find(activeEffect => activeEffect.effect == effect);
+        List<ActiveEffect> effectsToRemove = new List<ActiveEffect>();
 
-            if (existingEffect != null)
-            {
-                existingEffect.Reset();
-            }
-            else
-            {
-                var newActiveEffect = new ActiveStatusEffect((DurationEffectSO) effect);
-                effect.Apply(this);
-                _activeEffects.Add(newActiveEffect);
-            }
-            
-        }
-        else
+        for (int i = 0; i < _activeEffects.Count; i++)
         {
-            effect.Apply(this);
+            ActiveEffect activeEffect = _activeEffects[i];
+            activeEffect.remainingTime -= Time.deltaTime;
+            _activeEffects[i] = activeEffect; // Actualiza el struct en la lista
+
+            if (activeEffect.remainingTime <= 0)
+            {
+                effectsToRemove.Add(activeEffect);
+            }
+        }
+
+        foreach (ActiveEffect effectToRemove in effectsToRemove)
+        {
+            // Lógica para remover el efecto del jugador (si es necesario)
+            foreach (var effectData in effectToRemove.effect.properties)
+            {
+                effectData.Remove(this);
+            }
+            _activeEffects.Remove(effectToRemove);
         }
     }
 
-    public void RemoveEffect(ActiveStatusEffect activeEffect)
+    public void ApplyEffect(PlayerStatusEffectSO effect)
     {
-        if (!_activeEffects.Contains(activeEffect)) return;
-        var effect = activeEffect.effect;
-        effect.Remove(this);
-        _activeEffects.Remove(activeEffect);
+
+        // Manejar la duración si el efecto es activo
+        switch (effect.type)
+        {
+            case PlayerStatusEffectSO.EffectType.Active:
+                {
+                    ActiveEffect activeEffect = _activeEffects.Find(activeEffect => activeEffect.effect == effect);
+                    if (activeEffect.effect != null)
+                    {
+                        int id = _activeEffects.IndexOf(activeEffect);
+                        activeEffect.remainingTime = effect.duration.Value(effect.level);
+                        _activeEffects[id] = activeEffect;
+                        return;
+                    }
+                    ActiveEffect newActiveEffect = new ActiveEffect
+                    {
+                        effect = effect,
+                        remainingTime = effect.duration.Value(effect.level)
+                    };
+                    _activeEffects.Add(newActiveEffect);
+                }
+                break;
+            case PlayerStatusEffectSO.EffectType.Permanent:
+                {
+                    _activePermanentEffects.Add(effect);
+                }
+                break;
+        }
+        Debug.Log(effect.effectName + " added");
+
+        if (effect.properties != null)
+        {
+            foreach (var effectData in effect.properties)
+            {
+                effectData.Apply(this); // Llama al método Apply de la propiedad
+            }
+        }
     }
 
-    public void RemoveEffect(PermanentEffectSO permanentEffect)
+    public void RemoveEffect(PlayerStatusEffectSO effect)
     {
-        if (!_activePermanentEffects.Contains(permanentEffect)) return;
-        permanentEffect.Remove(this);
-        _activePermanentEffects.Remove(permanentEffect);
+        switch (effect.type)
+        {
+            case PlayerStatusEffectSO.EffectType.Active:
+                {
+                    var activeEffect = _activeEffects.Find(activeEffect => activeEffect.effect == effect);
+                    if (activeEffect.effect == null)
+                    {
+                        return;
+                    }
+                    _activeEffects.Remove(activeEffect);
+                }
+                break;
+            case PlayerStatusEffectSO.EffectType.Permanent:
+                {
+                    if (!_activePermanentEffects.Contains(effect)) return;
+                    _activePermanentEffects.Remove(effect);
+                }
+                break;
+        }
+
+        Debug.Log(effect.effectName + " removed");
+
+        foreach (var effectData in effect.properties)
+        {
+            effectData.Remove(this);
+        }
+        // activeEffects.RemoveAll(activeEffect => activeEffect.effect == effect); // Remueve el efecto de la lista
     }
 
     public void ValidateDeath()
@@ -168,31 +233,46 @@ public class PlayerController : MonoBehaviour
 
     public void Revive()
     {
-        for (int i = 0; i < _activeEffects.Count; i++)
+        for (int i = _activeEffects.Count - 1; i >= 0; i--)
         {
             var effect = _activeEffects[i];
             // if (effect == null) continue;
-            RemoveEffect(effect);
+            RemoveEffect(effect.effect);
         }
-        for (int i = 0; i < _activePermanentEffects.Count; i++)
+
+        for (int i = _activePermanentEffects.Count - 1; i >= 0; i--)
         {
             var effect = _activePermanentEffects[i];
             // if (effect == null) continue;
             RemoveEffect(effect);
         }
+        // for (int i = 0; i < _activePermanentEffects.Count; i++)
+        // {
+        //     var effect = _activePermanentEffects[i];
+        //     // if (effect == null) continue;
+        //     foreach (var effectData in effect.effects)
+        //     {
+        //         float finalValue = effectData.baseValue;
+        //         effectData.property.Remove(this);
+        //     }
+        // }
+        EnvironmentTemperature = 0;
         _currentBufferedTemperature = 0;
         _currentRunSpeed = _baseRunSpeed + EffectRunSpeed;
         _currentTemperature = _baseTemperature + _currentBufferedTemperature;
+        // var reviveInvencibility = ScriptableObject.CreateInstance<InvencibilityStatusEffectSO>();
+        // reviveInvencibility.Apply(this);
         _currentInvencibilityTime = _reviveInvencibiltyCooldown;
         gameObject.SetActive(true);
-        _invencibilityCoroutine = StartCoroutine(InvencibilityCoroutine());
+        // if (_invencibilityCoroutine != null) StopCoroutine(_invencibilityCoroutine);
+        // _invencibilityCoroutine = StartCoroutine(InvencibilityCoroutine(reviveInvencibility));
     }
 
-    IEnumerator InvencibilityCoroutine()
-    {
-        yield return new WaitForSeconds(_reviveInvencibiltyCooldown);
-        _currentInvencibilityTime = 0;
-    }
+    // IEnumerator InvencibilityCoroutine(InvencibilityStatusEffectSO effect)
+    // {
+    //     yield return new WaitForSeconds(_reviveInvencibiltyCooldown);
+    //     effect.Remove(this);
+    // }
     #endregion
 }
 
@@ -206,4 +286,11 @@ public struct PlayerDeathEvents
     public UnityEvent onSlipDeath;
     public UnityEvent onStumbleDeath;
     public UnityEvent onHandOffDeath;
+}
+
+[System.Serializable]
+public struct ActiveEffect
+{
+    public PlayerStatusEffectSO effect;
+    public float remainingTime;
 }

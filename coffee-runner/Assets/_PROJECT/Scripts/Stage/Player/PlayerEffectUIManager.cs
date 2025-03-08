@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerEffectUIManager : MonoBehaviour
 {
     public PlayerController player;
-    public PlayerEquippedPowerups equippedPowerups;
+    public PlayerStatusEffectContainerSO equippedPowerups;
     public Text playerHealthText;
     public Slider playerHealthBar;
     public TMP_Text environmentTemperature;
@@ -18,6 +18,8 @@ public class PlayerEffectUIManager : MonoBehaviour
 
     private List<GameObject> effectUIElements = new List<GameObject>();
     private List<GameObject> equippedEffectUIElements = new List<GameObject>();
+
+    private Dictionary<PlayerStatusEffectSO, float> activeEffectDurations = new Dictionary<PlayerStatusEffectSO, float>();
 
     void Update()
     {
@@ -40,17 +42,19 @@ public class PlayerEffectUIManager : MonoBehaviour
         playerHealthBar.value = player.Temperature;
         playerHealthText.text = player.Temperature.ToString("N1");
 
-        float environmentTemperatureValue = 0;
-        for (int i = 0; i < player.activePermanentEffects.Count; i++)
+        environmentTemperature.text = player.EnvironmentTemperature.ToString("N1");
+    }
+
+    public void ApplyEffectDuration(PlayerStatusEffectSO effect, float duration)
+    {
+        if (activeEffectDurations.ContainsKey(effect))
         {
-            var effect = player.activePermanentEffects[i];
-            if (effect is TemperatureSettingPlayerEffectSO)
-            {
-                environmentTemperatureValue += (effect as TemperatureSettingPlayerEffectSO).temperature;
-            }
-            
+            activeEffectDurations[effect] = duration;
         }
-        environmentTemperature.text = environmentTemperatureValue.ToString("N1");
+        else
+        {
+            activeEffectDurations.Add(effect, duration);
+        }
     }
 
     void UpdateEffectUI()
@@ -61,10 +65,12 @@ public class PlayerEffectUIManager : MonoBehaviour
         }
         effectUIElements.Clear();
 
-        foreach (var effect in player.activeEffects)
+        if (player == null) return; // Asegúrate de que el jugador esté asignado
+
+        foreach (ActiveEffect effect in player.activeEffects)
         {
             PlayerEffectUIItem newEffectUI = Instantiate(effectUIPrefab, effectUIParent);
-            TimeSpan time = TimeSpan.FromSeconds(effect.timeRemaining);
+            TimeSpan time = TimeSpan.FromSeconds(effect.remainingTime); // Accede al valor correctamente
             newEffectUI.UpdateContents(effect.effect.effectName, time.ToString(@"mm\:ss"));
             effectUIElements.Add(newEffectUI.gameObject);
         }
@@ -80,16 +86,17 @@ public class PlayerEffectUIManager : MonoBehaviour
 
         foreach (var effect in equippedPowerups.powerups)
         {
-            if (effect is PermanentEffectSO) continue;
-            PlayerEquippedEffectUIItem newEffectUI = Instantiate(equippedPowerupsPrefab, equippedPowerupsParent);
-            // TimeSpan time = TimeSpan.FromSeconds(effect.timeRemaining);
-            // newEffectUI.UpdateContents(effect.effect.effectName, time.ToString(@"mm\:ss"));
+            if (effect.type == PlayerStatusEffectSO.EffectType.Permanent) 
+            {
+                // player.RemoveEffect(effect);
+                player.ApplyEffect(effect);
+                continue;
+            }
+            PlayerEquippedEffectUIItem newEffectUI = Instantiate(equippedPowerupsPrefab, equippedPowerupsParent); 
             newEffectUI.equippedEffect = effect;
             newEffectUI.player = player;
-            newEffectUI.UpdateContents(effect.effectName);
+            newEffectUI.UpdateContents();
             equippedEffectUIElements.Add(newEffectUI.gameObject);
         }
     }
-
-    
 }

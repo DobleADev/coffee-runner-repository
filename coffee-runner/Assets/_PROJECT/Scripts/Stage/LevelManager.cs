@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -7,8 +8,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameOverUIManager _gameOverUIManager;
     PlayerController _player;
     LevelController _levelInstance;
-    [SerializeField] PermanentEffectSO[] _environmentDefaultEffects;
-    public PermanentEffectSO[] GetPermanentEffects => _environmentDefaultEffects;
+    [SerializeField] List<PlayerStatusEffectSO> _environmentDefaultEffects = new List<PlayerStatusEffectSO>();
+    public List<PlayerStatusEffectSO> GetPermanentEffects => _environmentDefaultEffects;
+
+    void OnValidate()
+    {
+        for (int i = _environmentDefaultEffects.Count - 1; i >= 0 ; i--)
+        {
+            var effect = _environmentDefaultEffects[i];
+            if (effect == null) continue;
+            if (effect.type != PlayerStatusEffectSO.EffectType.Permanent)
+            {
+                _environmentDefaultEffects.Remove(effect);
+            }
+        }
+    }
 
     public void InstanceLevel()
     {
@@ -26,26 +40,27 @@ public class LevelManager : MonoBehaviour
             Destroy(_player.gameObject);
         }
         _player = _level.start.Spawn();
-        var levelEffects = GetPermanentEffects;
-        for (int i = 0; i < levelEffects.Length; i++)
+        var levelEffects = _environmentDefaultEffects;
+        for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];
-            _player.ApplyEffect(effect);
+            if (effect == null) continue;
+            _player.ApplyEffect(effect); // Ahora usa PlayerStatusEffectSO
         }
         _playerEffectUIManager.player = _player;
     }
 
     public void RevivePlayer()
     {
-        // _player.gameObject.SetActive(true);
-        // _player.EffectTemperature = 0;
         _player.Revive();
-        var levelEffects = GetPermanentEffects;
-        for (int i = 0; i < levelEffects.Length; i++)
+        var levelEffects = _environmentDefaultEffects;
+        for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];
-            _player.ApplyEffect(effect);
+            if (effect == null) continue;
+            _player.ApplyEffect(effect); // Ahora usa PlayerStatusEffectSO
         }
+        _playerEffectUIManager.UpdateEquippedEffectUI();
         _playerEffectUIManager.UpdateUI();
     }
 

@@ -11,18 +11,18 @@ public class PlayerEquippedEffectUIItem : MonoBehaviour
     [SerializeField] Image _cooldownFill;
     [SerializeField] TMP_Text _cooldownRemainingText;
     public PlayerController player;
-    [SerializeField] private PlayerEffectSO _equippedEffect;
-    public PlayerEffectSO equippedEffect { get { return _equippedEffect; } set { _equippedEffect = value; } }
+    [SerializeField] private PlayerStatusEffectSO _equippedEffect;
+    public PlayerStatusEffectSO equippedEffect { get { return _equippedEffect; } set { _equippedEffect = value; } }
 
-    public void UpdateContents(string name)
+    public void UpdateContents()
     {
-        _nameText.text = name;
+        _nameText.text = _equippedEffect.effectName;
     }
 
     public void UseEquippedEffect()
     {
         player.ApplyEffect(_equippedEffect);
-        if (_equippedEffect.useCooldown > 0)
+        if (_equippedEffect.useCooldown.Value(_equippedEffect.level) > 0)
         {
             StopAllCoroutines();
             StartCoroutine(StartCooldown());
@@ -33,7 +33,7 @@ public class PlayerEquippedEffectUIItem : MonoBehaviour
     {
         _cooldownContainer.gameObject.SetActive(true);
         _equippedEffectButton.interactable = false;
-        float cooldown = _equippedEffect.useCooldown;
+        float cooldown = _equippedEffect.useCooldown.Value(_equippedEffect.level);
         float deltaDuration = 1 / cooldown;
         while (cooldown > 0)
         {

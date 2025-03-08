@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
+  m_Name: Termometro
+  m_EditorClassIdentifier: 
+  effectName: Termometro
+  description: ta la temperatura al punto neutro y aumenta la velocidad en un 10%
+    durante 5 segundos
+  type: 0
+  level: 1
+  duration:
+    _baseValue: 5
+    _upgrades: []
+  useCooldown:
+    _baseValue: 0
+    _upgrades: []
+  properties:
+  - {fileID: 11400000, guid: 92c87e0c851a2e34daa6d4c778906b80, type: 2}
+  - {fileID: 11400000, guid: 572678a8775dda7408f1c43d916ce646, type: 2}

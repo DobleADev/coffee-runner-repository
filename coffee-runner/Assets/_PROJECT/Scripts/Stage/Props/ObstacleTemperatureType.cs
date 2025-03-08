@@ -6,6 +6,13 @@ public class ObstacleChangeTemperature : ObstacleBase
 
     protected override void OnPlayerCrash(PlayerController player)
     {
+        // int playerInvencibilityCount = player.InvencibilityChances.Count;
+        // if (playerInvencibilityCount > 0)
+        // {
+        //     var lastChance = player.InvencibilityChances[playerInvencibilityCount - 1];
+        //     lastChance.Remove(player);
+        //     return;
+        // }
         player.EffectTemperature += _temperature;
     }
 }

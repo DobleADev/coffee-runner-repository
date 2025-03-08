@@ -43,7 +43,7 @@ public class ActiveStatusEffect
         else
         {
             timeRemaining = 0;
-            player.RemoveEffect(this);
+            // player.RemoveEffect(this);
         }
     }
 
