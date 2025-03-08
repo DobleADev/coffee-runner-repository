@@ -7,8 +7,13 @@ public class TemperatureBoostStatusEffectSO : StatusUpgradableEffectProperty
     [SerializeField] FloatUpgradable _upgrades;
     public override FloatUpgradable upgrades { get => _upgrades; set => _upgrades = value; }
 
-    public override void EachFrame(PlayerController player)
+    public override void Apply(PlayerController player)
     {
-        player.ApplyTemperature(temperatureChangeRate, Time.deltaTime);
+        player.AddTemperature(temperatureChangeRate);
+    }
+
+    public override void Remove(PlayerController player)
+    {
+        player.RemoveTemperature(temperatureChangeRate);
     }
 }

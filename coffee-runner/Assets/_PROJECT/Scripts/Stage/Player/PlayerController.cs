@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
     public float Temperature => _currentTemperature;
     public float EffectRunSpeed { get; private set; }
     public float EnvironmentTemperature { get; set; }
-    public float EffectTemperature { get { return _currentBufferedTemperature; } set { _currentBufferedTemperature = value; } }
+    public float EffectTemperature { get; private set; }
+    public float BufferedTemperature { get { return _currentBufferedTemperature; } set { _currentBufferedTemperature = value; } }
     public float InvencibilityTime { get { return _currentInvencibilityTime; } set { _currentInvencibilityTime = value; } }
     public List<InvencibilityStatusEffectSO> InvencibilityChances { get { return _currentInvencibilityChances; } set { _currentInvencibilityChances = value; } }
     public List<SlipShieldStatusEffectSO> CurrentSlipShields { get { return _currentSlipShields; } set { _currentSlipShields = value; } }
@@ -84,7 +85,10 @@ public class PlayerController : MonoBehaviour
                 effectData.EachFrame(this);
             }
         }
-        _currentBufferedTemperature += EnvironmentTemperature * Time.deltaTime;
+        if (!_isTemperatureCap)
+        {
+            _currentBufferedTemperature += (EffectTemperature + EnvironmentTemperature) * Time.deltaTime;
+        }
 
         _currentInvencibilityTime -= Time.deltaTime;
         _currentInvencibilityTime = Mathf.Max(0, _currentInvencibilityTime);
@@ -111,6 +115,8 @@ public class PlayerController : MonoBehaviour
     #region Public Methods
     public void AddSpeed(float amount) { EffectRunSpeed += amount; }
     public void RemoveSpeed(float amount) { EffectRunSpeed -= amount; }
+    public void AddTemperature(float amount) { EffectTemperature += amount; }
+    public void RemoveTemperature(float amount) { EffectTemperature -= amount; }
     public void ApplyTemperature(float amount, float delta = 1)
     {
         if (_isTemperatureCap)
@@ -162,6 +168,14 @@ public class PlayerController : MonoBehaviour
                         int id = _activeEffects.IndexOf(activeEffect);
                         activeEffect.remainingTime = effect.duration.Value(effect.level);
                         _activeEffects[id] = activeEffect;
+                        if (effect.properties != null)
+                        {
+                            foreach (var effectData in effect.properties)
+                            {
+                                effectData.Remove(this);
+                                effectData.Apply(this); // Llama al método Apply de la propiedad
+                            }
+                        }
                         return;
                     }
                     ActiveEffect newActiveEffect = new ActiveEffect
@@ -169,23 +183,28 @@ public class PlayerController : MonoBehaviour
                         effect = effect,
                         remainingTime = effect.duration.Value(effect.level)
                     };
+                    if (effect.properties != null)
+                    {
+                        foreach (var effectData in effect.properties)
+                        {
+                            effectData.Apply(this); // Llama al método Apply de la propiedad
+                        }
+                    }
                     _activeEffects.Add(newActiveEffect);
                 }
                 break;
             case PlayerStatusEffectSO.EffectType.Permanent:
                 {
+                    if (effect.properties != null)
+                    {
+                        foreach (var effectData in effect.properties)
+                        {
+                            effectData.Apply(this); // Llama al método Apply de la propiedad
+                        }
+                    }
                     _activePermanentEffects.Add(effect);
                 }
                 break;
-        }
-        Debug.Log(effect.effectName + " added");
-
-        if (effect.properties != null)
-        {
-            foreach (var effectData in effect.properties)
-            {
-                effectData.Apply(this); // Llama al método Apply de la propiedad
-            }
         }
     }
 

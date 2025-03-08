@@ -8,7 +8,7 @@ public class ObstacleSlipType : ObstacleInstakill
         if (shieldCount > 0)
         {
             var shield = entity.CurrentSlipShields[shieldCount - 1];
-            shield.Remove(entity);
+            shield.Use(entity);
             return;
         }
 

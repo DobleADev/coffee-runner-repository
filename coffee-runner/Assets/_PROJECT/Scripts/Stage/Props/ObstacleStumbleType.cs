@@ -8,7 +8,7 @@ public class ObstacleStumbleType : ObstacleInstakill
         if (shieldCount > 0)
         {
             var shield = entity.CurrentStumbleShields[shieldCount - 1];
-            shield.Remove(entity);
+            shield.Use(entity);
             return;
         }
 

@@ -16,6 +16,13 @@ public class StumbleShieldStatusEffectSO : StatusEffectProperty
         player.CurrentStumbleShields.Add(this);
     }
 
+    public void Use(PlayerController player)
+    {
+        if (_visual == null) return;
+        player.InvencibilityTime = 2f;
+        Remove(player);
+    }
+
     public override void Remove(PlayerController player)
     {
         if (_visual == null)
@@ -23,7 +30,7 @@ public class StumbleShieldStatusEffectSO : StatusEffectProperty
             return;
         }
         Destroy(_visual);
-        player.InvencibilityTime = 2f;
+        _visual = null;
         player.CurrentStumbleShields.Remove(this);
     }
 }

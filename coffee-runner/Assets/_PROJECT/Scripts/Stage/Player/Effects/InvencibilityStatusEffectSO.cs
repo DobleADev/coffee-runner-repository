@@ -14,11 +14,17 @@ public class InvencibilityStatusEffectSO : StatusUpgradableEffectProperty
         player.InvencibilityChances.Add(this);
     }
 
+    public void Use(PlayerController player)
+    {
+        if (!_active) return;
+        player.InvencibilityTime = 2f;
+        Remove(player);
+    }
+
     public override void Remove(PlayerController player)
     {
         if (!_active) return;
         _active = false;
-        player.InvencibilityTime = 2f;
         player.InvencibilityChances.Remove(this);
     }
 }

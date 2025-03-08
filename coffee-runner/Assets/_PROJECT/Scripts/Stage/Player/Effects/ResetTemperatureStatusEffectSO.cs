@@ -5,6 +5,6 @@ public class ResetTemperatureStatusEffectSO : StatusEffectProperty
 {
     public override void Apply(PlayerController player)
     {
-        player.EffectTemperature = 0;
+        player.BufferedTemperature = 0;
     }
 }

@@ -18,10 +18,10 @@ MonoBehaviour:
   type: 0
   level: 1
   duration:
-    _baseValue: 3
+    _baseValue: 10
     _upgrades: []
   useCooldown:
-    _baseValue: 10
+    _baseValue: 1
     _upgrades: []
   properties:
   - {fileID: 11400000, guid: 3b1326dc89fd2f84b8dd43e13a03d068, type: 2}

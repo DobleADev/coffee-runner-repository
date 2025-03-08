@@ -13,6 +13,6 @@ public class ObstacleChangeTemperature : ObstacleBase
         //     lastChance.Remove(player);
         //     return;
         // }
-        player.EffectTemperature += _temperature;
+        player.BufferedTemperature += _temperature;
     }
 }

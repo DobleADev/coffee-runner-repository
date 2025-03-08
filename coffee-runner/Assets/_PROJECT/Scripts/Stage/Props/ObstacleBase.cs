@@ -21,10 +21,10 @@ public abstract class ObstacleInstakill : ObstacleBase, IDeathStrategy<PlayerCon
     protected override void OnPlayerCrash(PlayerController player)
     {
         int playerInvencibilityCount = player.InvencibilityChances.Count;
-        if (playerInvencibilityCount > 0)
+        if (playerInvencibilityCount > 0 && !_forceDeath)
         {
             var lastChance = player.InvencibilityChances[playerInvencibilityCount - 1];
-            lastChance.Remove(player);
+            lastChance.Use(player);
             return;
         }
 

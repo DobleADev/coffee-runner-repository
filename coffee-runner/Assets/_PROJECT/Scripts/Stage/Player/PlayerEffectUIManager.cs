@@ -9,6 +9,14 @@ public class PlayerEffectUIManager : MonoBehaviour
     public PlayerController player;
     public PlayerStatusEffectContainerSO equippedPowerups;
     public Text playerHealthText;
+    public string playerCurrentSpeedLabel = "Speed";
+    public string playerCurrentTemperatureGainLabel = "Temperature Gain";
+    public string playerCurrentSlipShieldsLabel = "Slip Shields";
+    public string playerCurrentInvensibilityChancesLabel = "Invensibility Chances";
+    public TMP_Text playerCurrentSpeedText;
+    public TMP_Text playerCurrentTemperatureGainText;
+    public TMP_Text playerCurrentSlipShieldsText;
+    public TMP_Text playerCurrentInvensibilityChancesText;
     public Slider playerHealthBar;
     public TMP_Text environmentTemperature;
     public PlayerEffectUIItem effectUIPrefab;
@@ -33,15 +41,18 @@ public class PlayerEffectUIManager : MonoBehaviour
             return;
         }
 
-        UpdateTemperatureUI();
+        UpdatePlayerStatsUI();
         UpdateEffectUI();
     }
 
-    private void UpdateTemperatureUI()
+    private void UpdatePlayerStatsUI()
     {
         playerHealthBar.value = player.Temperature;
         playerHealthText.text = player.Temperature.ToString("N1");
-
+        playerCurrentSpeedText.text = playerCurrentSpeedLabel + " = " + player.RunSpeed.ToString("N2");
+        playerCurrentTemperatureGainText.text = playerCurrentTemperatureGainLabel + " = " + (player.EffectTemperature + player.EnvironmentTemperature).ToString("N2");
+        playerCurrentSlipShieldsText.text = playerCurrentSlipShieldsLabel + " = " + player.CurrentSlipShields.Count.ToString();
+        playerCurrentInvensibilityChancesText.text = playerCurrentInvensibilityChancesLabel + " = " +  player.InvencibilityChances.Count.ToString();
         environmentTemperature.text = player.EnvironmentTemperature.ToString("N1");
     }
 
