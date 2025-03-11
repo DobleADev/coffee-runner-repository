@@ -18,11 +18,12 @@ MonoBehaviour:
     reduce a la mitad
   type: 0
   level: 1
+  maxLevel: 1
   duration:
     _baseValue: 0
     _upgrades: []
   useCooldown:
-    _baseValue: 0
+    _baseValue: 1
     _upgrades: []
   properties:
   - {fileID: 11400000, guid: 140a631a19143444b9f59e9d1d717214, type: 2}

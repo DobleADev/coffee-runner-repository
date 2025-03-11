@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8371623eeb842af448c1ff35ac3fbb07, type: 3}
   m_Name: LecheFrescaTemperatureBoostProperty
   m_EditorClassIdentifier: 
-  temperatureChangeRate: 5
+  _level: 1
   _upgrades:
-    _baseValue: 0
+    _baseValue: 5
     _upgrades: []

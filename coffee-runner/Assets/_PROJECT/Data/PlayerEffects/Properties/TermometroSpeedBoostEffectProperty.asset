@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddf4bd99ae8a724b93e4eb1d09a6340, type: 3}
   m_Name: TermometroSpeedBoostEffectProperty
   m_EditorClassIdentifier: 
-  speedBoost: 10
-  percentage: 1
+  _level: 1
+  basePercentage: 0
   _upgrades:
-    _baseValue: 0
+    _baseValue: 10
     _upgrades: []

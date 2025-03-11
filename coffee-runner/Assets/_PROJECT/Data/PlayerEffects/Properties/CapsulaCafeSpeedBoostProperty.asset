@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddf4bd99ae8a724b93e4eb1d09a6340, type: 3}
   m_Name: CapsulaCafeSpeedBoostProperty
   m_EditorClassIdentifier: 
-  speedBoost: 5
-  percentage: 1
+  _level: 1
+  basePercentage: 1
   _upgrades:
-    _baseValue: 0
-    _upgrades: []
+    _baseValue: 5
+    _upgrades:
+    - setting: 10
+      percentage: 1
+    - setting: 15
+      percentage: 1

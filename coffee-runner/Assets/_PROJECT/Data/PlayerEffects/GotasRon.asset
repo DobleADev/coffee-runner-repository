@@ -17,6 +17,7 @@ MonoBehaviour:
     bajos que absorve 1 impacto durante 10 segundos
   type: 0
   level: 1
+  maxLevel: 1
   duration:
     _baseValue: 10
     _upgrades: []

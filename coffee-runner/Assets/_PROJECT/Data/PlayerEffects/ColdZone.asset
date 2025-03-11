@@ -16,6 +16,7 @@ MonoBehaviour:
   description: 
   type: 1
   level: 1
+  maxLevel: 1
   duration:
     _baseValue: 0
     _upgrades: []

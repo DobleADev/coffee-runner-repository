@@ -3,44 +3,39 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] LevelController _level;
+    [SerializeField] LevelDataSO _level;
     [SerializeField] PlayerEffectUIManager _playerEffectUIManager;
     [SerializeField] GameOverUIManager _gameOverUIManager;
     PlayerController _player;
     LevelController _levelInstance;
-    [SerializeField] List<PlayerStatusEffectSO> _environmentDefaultEffects = new List<PlayerStatusEffectSO>();
-    public List<PlayerStatusEffectSO> GetPermanentEffects => _environmentDefaultEffects;
-
-    void OnValidate()
-    {
-        for (int i = _environmentDefaultEffects.Count - 1; i >= 0 ; i--)
-        {
-            var effect = _environmentDefaultEffects[i];
-            if (effect == null) continue;
-            if (effect.type != PlayerStatusEffectSO.EffectType.Permanent)
-            {
-                _environmentDefaultEffects.Remove(effect);
-            }
-        }
-    }
 
     public void InstanceLevel()
     {
+        if (_level == null)
+        {
+            return;
+        }
+
         if (_levelInstance != null)
         {
             Destroy(_levelInstance.gameObject);
         }
-        _levelInstance = Instantiate(_level);
+        _levelInstance = Instantiate(_level.prefab);
     }
 
     public void InstancePlayer()
     {
+        if (_levelInstance == null)
+        {
+            return;
+        }
+
         if (_player != null)
         {
             Destroy(_player.gameObject);
         }
-        _player = _level.start.Spawn();
-        var levelEffects = _environmentDefaultEffects;
+        _player = _levelInstance.start.Spawn();
+        var levelEffects = _level.prefab.EnvironmentDefaultEffects;
         for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];
@@ -48,12 +43,13 @@ public class LevelManager : MonoBehaviour
             _player.ApplyEffect(effect); // Ahora usa PlayerStatusEffectSO
         }
         _playerEffectUIManager.player = _player;
+        _playerEffectUIManager.level = _levelInstance;
     }
 
     public void RevivePlayer()
     {
         _player.Revive();
-        var levelEffects = _environmentDefaultEffects;
+        var levelEffects = _level.prefab.EnvironmentDefaultEffects;
         for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];

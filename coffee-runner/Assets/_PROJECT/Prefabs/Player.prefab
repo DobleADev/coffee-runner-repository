@@ -298,8 +298,10 @@ GameObject:
   - component: {fileID: 3794810629925866100}
   - component: {fileID: 8400944967657083627}
   - component: {fileID: 7286069602395340622}
+  - component: {fileID: 1859124925610803378}
   - component: {fileID: 9146739828369060693}
   - component: {fileID: 4138741878629452761}
+  - component: {fileID: 2209686642218120424}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -345,6 +347,8 @@ MonoBehaviour:
   _heatSupported: 100
   _coldSupported: -100
   _reviveInvencibiltyCooldown: 2
+  _currentSlipShields: []
+  _currentStumbleShields: []
   _doubleJump: 0
   _activeEffects: []
   _activePermanentEffects: []
@@ -564,7 +568,6 @@ MonoBehaviour:
   groundCheckRadius: 0.5
   _gravityScale: 3
   _maxFallHeight: 18
-  _snapThreshold: 0.5
   wallSlideSpeed: 1
   wallJumpForce: 15
   leftWallCheck: {fileID: 2687849614790253624}
@@ -574,6 +577,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpInputBuffer: 0.2
+--- !u!114 &1859124925610803378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244379715744317633}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe2469f6430bb34c8e33849fc3a0a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _body: {fileID: 9146739828369060693}
+  _circleCollider: {fileID: 2209686642218120424}
+  _boxCollider: {fileID: 0}
+  _skinWidth: 0.1
+  _speed: 5
+  _jumpHeight: 15
+  _gravityScale: 3
+  _maxFallHeight: 18
+  _maxSlopeAngle: 67.8
+  _snapThreshold: 0.2
+  _collideWith:
+    serializedVersion: 2
+    m_Bits: 65
+  _boxInsteadOfCircleCasting: 0
 --- !u!50 &9146739828369060693
 Rigidbody2D:
   serializedVersion: 5
@@ -638,3 +667,39 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!58 &2209686642218120424
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244379715744317633}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: c9a5241c2b092e44eb40788f429ee2c4, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_Radius: 0.5

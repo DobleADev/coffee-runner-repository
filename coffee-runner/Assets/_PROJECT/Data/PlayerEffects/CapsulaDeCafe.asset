@@ -16,7 +16,8 @@ MonoBehaviour:
   description: aplica un aumento de velocidad permanente de +5% durante el resto
     de la partida y aumenta ligeramente la temperatura
   type: 1
-  level: 1
+  _level: 1
+  maxLevel: 3
   duration:
     _baseValue: 0
     _upgrades: []

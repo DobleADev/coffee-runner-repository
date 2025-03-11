@@ -16,11 +16,12 @@ public class PlayerPowerupsUIManager : MonoBehaviour
     public GameObject powerUpDetailsContent;
     public TMP_Text powerUpNameText;
     public TMP_Text powerUpDescriptionText;
-    public TMP_Text powerUpLevelText;
-    public TMP_Text powerUpDurationText;
+    public TMP_Text powerUpUpgradeText;
 
     public Button equipButton;
     public Button dequipButton;
+    public Button levelUpButton;
+    public Button levelDownButton;
 
     private PlayerStatusEffectSO selectedPowerUp;
 
@@ -46,14 +47,20 @@ public class PlayerPowerupsUIManager : MonoBehaviour
     public void ShowPowerUpDetails(PlayerStatusEffectSO powerUp)
     {
         selectedPowerUp = powerUp;
-        powerUpNameText.text = powerUp.effectName;
-        powerUpDescriptionText.text = powerUp.description;
-        // powerUpLevelText.text = "Level: " + powerUp.currentLevel;
+        powerUpDetailsContent.SetActive(true);
+        UpdatePowerUpDetails();
+    }
+
+    public void UpdatePowerUpDetails()
+    {
+        powerUpNameText.text = selectedPowerUp.effectName + "\nLv. " + selectedPowerUp.level;
+        powerUpDescriptionText.text = selectedPowerUp.description;
         // powerUpDurationText.text = "Duration: " + powerUp.duration;
-        bool isSelectedPowerupEquipped = powerups.powerups.Contains(powerUp);
+        levelUpButton.interactable = selectedPowerUp.level < selectedPowerUp.maxLevel;
+        levelDownButton.interactable = selectedPowerUp.level > 1;
+        bool isSelectedPowerupEquipped = powerups.powerups.Contains(selectedPowerUp);
         equipButton.gameObject.SetActive(!isSelectedPowerupEquipped);
         dequipButton.gameObject.SetActive(isSelectedPowerupEquipped);
-        powerUpDetailsContent.SetActive(true);
     }
 
     public void EquipSelectedPowerUp()
@@ -62,11 +69,8 @@ public class PlayerPowerupsUIManager : MonoBehaviour
         {
             powerups.powerups.Add(selectedPowerUp);
             UpdateEquippedPowerUpsUI();
-            UpdateEquippableButtonsStatus(); // Update the status of the equippable buttons
-            
-            bool isSelectedPowerupEquipped = powerups.powerups.Contains(selectedPowerUp);
-            equipButton.gameObject.SetActive(!isSelectedPowerupEquipped);
-            dequipButton.gameObject.SetActive(isSelectedPowerupEquipped);
+            UpdateEquippableButtonsStatus();
+            UpdatePowerUpDetails();
         }
     }
 
@@ -76,11 +80,8 @@ public class PlayerPowerupsUIManager : MonoBehaviour
         {
             powerups.powerups.Remove(powerUp);
             UpdateEquippedPowerUpsUI();
-            UpdateEquippableButtonsStatus(); // Update the status of the equippable buttons
-
-            bool isSelectedPowerupEquipped = powerups.powerups.Contains(selectedPowerUp);
-            equipButton.gameObject.SetActive(!isSelectedPowerupEquipped);
-            dequipButton.gameObject.SetActive(isSelectedPowerupEquipped);
+            UpdateEquippableButtonsStatus(); 
+            UpdatePowerUpDetails();
         }
     }
 
@@ -112,6 +113,20 @@ public class PlayerPowerupsUIManager : MonoBehaviour
                 button.SetEquippedStatus(powerups.powerups.Contains(button.powerUp));
             }
         }
+    }
+
+    public void LevelUpSelectedPowerUp()
+    {
+        selectedPowerUp.level ++;
+        selectedPowerUp.level = Mathf.Clamp(selectedPowerUp.level, 1, selectedPowerUp.maxLevel);
+        UpdatePowerUpDetails();
+    }
+
+    public void LevelDownSelectedPowerUp()
+    {
+        selectedPowerUp.level --;
+        selectedPowerUp.level = Mathf.Clamp(selectedPowerUp.level, 1, selectedPowerUp.maxLevel);
+        UpdatePowerUpDetails();
     }
 }
 

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4661dd2186264d4ba1b036f5aec8610, type: 3}
   m_Name: EndulcoranteTemperatureChangeProperty
   m_EditorClassIdentifier: 
-  temperature: -20
+  _level: 1
+  basePercentage: 0
+  conditionType: 0
+  condition: 0
+  conditionPercentage: 0
   _upgrades:
-    _baseValue: 0
+    _baseValue: -20
     _upgrades: []

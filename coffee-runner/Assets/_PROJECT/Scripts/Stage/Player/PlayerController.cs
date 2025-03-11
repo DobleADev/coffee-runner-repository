@@ -105,9 +105,9 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out PowerUp powerUp))
+        if (other.TryGetComponent(out IInteractable<PlayerController> interactable))
         {
-            powerUp.Interact(this);
+            interactable.Interact(this);
         }
     }
     #endregion

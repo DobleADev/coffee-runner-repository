@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0125675ef40734b93b73743b1b3c87, type: 3}
   m_Name: CapsulaCafeEnvironmentTemperatureProperty
   m_EditorClassIdentifier: 
+  _level: 1
   temperature: 1
   _upgrades:
-    _baseValue: 0
-    _upgrades: []
+    _baseValue: 1
+    _upgrades:
+    - setting: 1.2
+      percentage: 0
+    - setting: 1.5
+      percentage: 0

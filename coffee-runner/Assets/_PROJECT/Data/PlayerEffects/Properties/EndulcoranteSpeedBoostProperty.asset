@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddf4bd99ae8a724b93e4eb1d09a6340, type: 3}
   m_Name: EndulcoranteSpeedBoostProperty
   m_EditorClassIdentifier: 
-  speedBoost: 2
-  percentage: 0
+  _level: 1
+  basePercentage: 0
   _upgrades:
-    _baseValue: 0
+    _baseValue: 2
     _upgrades: []

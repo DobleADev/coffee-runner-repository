@@ -16,13 +16,22 @@ MonoBehaviour:
   description: aumenta la temperatura de golpe y aumenta la velocidad de movimiento
     durante 6 segundos
   type: 0
-  level: 1
+  _level: 3
+  maxLevel: 3
   duration:
     _baseValue: 6
-    _upgrades: []
+    _upgrades:
+    - setting: 1
+      percentage: 0
+    - setting: 1.5
+      percentage: 0
   useCooldown:
-    _baseValue: 12
-    _upgrades: []
+    _baseValue: 3
+    _upgrades:
+    - setting: -1
+      percentage: 0
+    - setting: -1.5
+      percentage: 0
   properties:
   - {fileID: 11400000, guid: df1af8daba622fd4dbd9117681d1147d, type: 2}
   - {fileID: 11400000, guid: b8be6caa53bf65a42b0939be552b39a9, type: 2}

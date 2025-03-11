@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddf4bd99ae8a724b93e4eb1d09a6340, type: 3}
   m_Name: ShockCafeinaSpeed
   m_EditorClassIdentifier: 
-  speedBoost: 2
+  _level: 3
+  basePercentage: 0
   _upgrades:
-    _baseValue: 0
-    _upgrades: []
+    _baseValue: 2
+    _upgrades:
+    - setting: 25
+      percentage: 1
+    - setting: 40
+      percentage: 1

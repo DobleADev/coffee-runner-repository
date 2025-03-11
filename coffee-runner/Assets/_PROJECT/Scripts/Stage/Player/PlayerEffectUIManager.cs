@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerEffectUIManager : MonoBehaviour
 {
     public PlayerController player;
+    public LevelController level;
     public PlayerStatusEffectContainerSO equippedPowerups;
     public Text playerHealthText;
     public string playerCurrentSpeedLabel = "Speed";
@@ -18,6 +19,7 @@ public class PlayerEffectUIManager : MonoBehaviour
     public TMP_Text playerCurrentSlipShieldsText;
     public TMP_Text playerCurrentInvensibilityChancesText;
     public Slider playerHealthBar;
+    public Slider playerProgressBar;
     public TMP_Text environmentTemperature;
     public PlayerEffectUIItem effectUIPrefab;
     public Transform effectUIParent;
@@ -29,7 +31,7 @@ public class PlayerEffectUIManager : MonoBehaviour
 
     private Dictionary<PlayerStatusEffectSO, float> activeEffectDurations = new Dictionary<PlayerStatusEffectSO, float>();
 
-    void Update()
+    void LateUpdate()
     {
         UpdateUI();
     }
@@ -41,8 +43,13 @@ public class PlayerEffectUIManager : MonoBehaviour
             return;
         }
 
+        
+
         UpdatePlayerStatsUI();
         UpdateEffectUI();
+        playerProgressBar.minValue = level.start.transform.position.x;
+        playerProgressBar.maxValue = level.end.transform.position.x;
+        playerProgressBar.value = player.transform.position.x;
     }
 
     private void UpdatePlayerStatsUI()
