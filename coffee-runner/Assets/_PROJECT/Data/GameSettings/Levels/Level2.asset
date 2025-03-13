@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca7954252f0b324bba689caac642426, type: 3}
-  m_Name: SelectedLevel
+  m_Script: {fileID: 11500000, guid: fbc38a8eded1e7040bf626cb167cbbf4, type: 3}
+  m_Name: Level2
   m_EditorClassIdentifier: 
-  level: {fileID: 0}
+  levelName: No hay na xd
+  prefab: {fileID: 0}
+  completed: 0

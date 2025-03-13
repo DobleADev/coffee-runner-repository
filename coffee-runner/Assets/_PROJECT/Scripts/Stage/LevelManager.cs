@@ -1,17 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] LevelDataSO _level;
+    [SerializeField] LevelReferenceSO _currentLevel;
     [SerializeField] PlayerEffectUIManager _playerEffectUIManager;
     [SerializeField] GameOverUIManager _gameOverUIManager;
+    [SerializeField] UnityEvent _onErrorLevelLoading;
+    [SerializeField] UnityEvent _onSuccessfullLevelLoading;
     PlayerController _player;
     LevelController _levelInstance;
 
     public void InstanceLevel()
     {
-        if (_level == null)
+        if (_currentLevel == null)
         {
             return;
         }
@@ -20,7 +23,15 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(_levelInstance.gameObject);
         }
-        _levelInstance = Instantiate(_level.prefab);
+
+        if (_currentLevel.level.prefab == null)
+        {
+            _onErrorLevelLoading?.Invoke();
+            return;
+        }
+        
+        _levelInstance = Instantiate(_currentLevel.level.prefab);
+        _onSuccessfullLevelLoading?.Invoke();
     }
 
     public void InstancePlayer()
@@ -35,7 +46,7 @@ public class LevelManager : MonoBehaviour
             Destroy(_player.gameObject);
         }
         _player = _levelInstance.start.Spawn();
-        var levelEffects = _level.prefab.EnvironmentDefaultEffects;
+        var levelEffects = _currentLevel.level.prefab.EnvironmentDefaultEffects;
         for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];
@@ -49,7 +60,7 @@ public class LevelManager : MonoBehaviour
     public void RevivePlayer()
     {
         _player.Revive();
-        var levelEffects = _level.prefab.EnvironmentDefaultEffects;
+        var levelEffects = _currentLevel.level.prefab.EnvironmentDefaultEffects;
         for (int i = 0; i < levelEffects.Count; i++)
         {
             var effect = levelEffects[i];
@@ -63,6 +74,11 @@ public class LevelManager : MonoBehaviour
     public void DestroyPlayer()
     {
         Destroy(_player.gameObject);
+    }
+
+    public void CompleteLevel()
+    {
+        _currentLevel.level.completed = true;
     }
 
     public void UpdateGameOverData()

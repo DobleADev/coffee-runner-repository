@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager instance { get; private set; }
-    
     public int coins { get; set; }
     public int premiumCoins { get; set; }
 
@@ -12,11 +11,12 @@ public class GameDataManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(instance.gameObject);
+            Destroy(gameObject);
         }
-        DontDestroyOnLoad(instance);
+        
     }
 }
