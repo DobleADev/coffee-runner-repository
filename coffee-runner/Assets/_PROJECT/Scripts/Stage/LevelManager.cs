@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        _currentLevel.level.completed = true;
+        GameDataManager.instance.CompleteLevel(_currentLevel.level.levelName);
     }
 
     public void UpdateGameOverData()

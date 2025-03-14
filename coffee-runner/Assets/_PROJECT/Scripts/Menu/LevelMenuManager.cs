@@ -35,7 +35,18 @@ public class LevelMenuManager : MonoBehaviour
             levelItem.SetUp(level, this);
             if (i > 0)
             {
-                levelItem.SetLock(!_selectedWorld.levels[i-1].completed);
+                // Previous Level data
+                var levelData = GameDataManager.instance.GetLevelProgress(_selectedWorld.levels[i-1].levelName);
+                bool locked = true;
+                if (levelData != null)
+                {
+                    if (levelData.completed)
+                    {
+                        locked = false;
+                    }
+                }
+
+                levelItem.SetLock(locked);
             }
             _items.Add(levelItem.gameObject);
         }
