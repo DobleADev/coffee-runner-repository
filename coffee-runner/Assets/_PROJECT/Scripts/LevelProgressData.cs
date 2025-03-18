@@ -7,3 +7,11 @@ public class LevelProgressData
     public bool completed;
     
 }
+
+[System.Serializable]
+public class WorldProgressData
+{
+    public string worldName;
+    public bool completed;
+    
+}

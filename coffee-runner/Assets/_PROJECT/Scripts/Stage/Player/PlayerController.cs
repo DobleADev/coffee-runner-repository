@@ -276,6 +276,7 @@ public class PlayerController : MonoBehaviour
         //     }
         // }
         EnvironmentTemperature = 0;
+        EffectTemperature = 0;
         _currentBufferedTemperature = 0;
         _currentRunSpeed = _baseRunSpeed + EffectRunSpeed;
         _currentTemperature = _baseTemperature + _currentBufferedTemperature;

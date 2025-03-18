@@ -43,8 +43,6 @@ public class PlayerEffectUIManager : MonoBehaviour
             return;
         }
 
-        
-
         UpdatePlayerStatsUI();
         UpdateEffectUI();
         playerProgressBar.minValue = level.start.transform.position.x;

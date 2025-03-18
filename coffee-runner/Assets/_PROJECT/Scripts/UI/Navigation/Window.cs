@@ -17,4 +17,19 @@ public class Window : MonoBehaviour
         gameObject.SetActive(false);
         OnWindowClosed?.Invoke();
     }
+
+    public void OpenWindow(Window window)
+    {
+        WindowManager.instance.OpenWindow(window);
+    }
+
+    public void CloseLastWindow()
+    {
+        WindowManager.instance.CloseLastWindow();
+    }
+
+    public void CloseAllWindows()
+    {
+        WindowManager.instance.CloseAllWindows();
+    }
 }

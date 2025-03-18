@@ -25,10 +25,33 @@ public class WorldMenuManager : MonoBehaviour
         }
 
         // Create new buttons for each equipped power-up
-        foreach (var world in _worlds)
+        // foreach (var world in _worlds)
+        // {
+        //     WorldMenuItem worldItem = Instantiate(_itemPrefab, _itemParent);
+        //     worldItem.SetUp(world, this);
+        //     _items.Add(worldItem.gameObject);
+        // }
+
+        for (int i = 0; i < _worlds.Length; i++)
         {
+            var world = _worlds[i];
             WorldMenuItem worldItem = Instantiate(_itemPrefab, _itemParent);
             worldItem.SetUp(world, this);
+            if (i > 0)
+            {
+                // Previous Level data
+                var worldData = GameDataManager.instance.GetWorldProgress(_worlds[i-1].worldName);
+                bool locked = true;
+                if (worldData != null)
+                {
+                    if (worldData.completed)
+                    {
+                        locked = false;
+                    }
+                }
+
+                worldItem.SetLock(locked);
+            }
             _items.Add(worldItem.gameObject);
         }
     }

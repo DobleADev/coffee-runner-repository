@@ -3,6 +3,19 @@ using UnityEngine;
 
 public class WindowManager : MonoBehaviour
 {
+    public static WindowManager instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private Stack<Window> windows = new Stack<Window>();
 
     public void OpenWindow(Window window)

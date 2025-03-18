@@ -40,7 +40,8 @@ public class PlayerPowerupsUIManager : MonoBehaviour
             GameObject buttonObj = Instantiate(powerUpButtonPrefab, powerUpListContent);
             PlayerPowerupsUIItem button = buttonObj.GetComponent<PlayerPowerupsUIItem>();
             button.SetEquippedStatus(powerups.powerups.Contains(powerUp)); // Set initial status
-            button.SetUp(powerUp, this);
+            button.SetUp(powerUp);
+            button.OnPowerUpSelected += ShowPowerUpDetails;
         }
     }
 

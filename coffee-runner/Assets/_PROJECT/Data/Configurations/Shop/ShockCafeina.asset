@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8d52718e3b8fb4891de730a6dde0f3, type: 3}
+  m_Name: ShockCafeina
+  m_EditorClassIdentifier: 
+  price: 2
+  thumbnail: {fileID: 0}
+  powerup: {fileID: 11400000, guid: 586b1f8ca259d214d813cbd7f9cca55b, type: 2}
