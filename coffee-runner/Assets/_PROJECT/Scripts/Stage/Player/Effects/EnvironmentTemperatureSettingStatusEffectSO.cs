@@ -6,6 +6,7 @@ public class EnvironmentTemperatureSettingStatusEffectSO : StatusUpgradableEffec
     public float temperature;
     [SerializeField] FloatUpgradable _upgrades;
     public override FloatUpgradable upgrades { get => _upgrades; set => _upgrades = value; }
+    public override string effectName => "Environment Temperature";
  
     public override void Apply(PlayerController player)
     {

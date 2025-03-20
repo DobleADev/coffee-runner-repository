@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 430072601}
   - component: {fileID: 430072602}
   - component: {fileID: 430072603}
+  - component: {fileID: 430072604}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1660,6 +1661,7 @@ MonoBehaviour:
   _currentLevel: {fileID: 11400000, guid: b5d3382777f6d7b4585d02fddc4e1ada, type: 2}
   _playerEffectUIManager: {fileID: 1225158309}
   _gameOverUIManager: {fileID: 2006440412}
+  _levelFinishedUIManager: {fileID: 639430185}
   _onErrorLevelLoading:
     m_PersistentCalls:
       m_Calls:
@@ -1981,6 +1983,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0d55ddf517ce439cab1a90831ba00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &430072604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430072593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676e6079971ca7647b4d771d7e7cdac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: f8d25821bae3ed24aaeb66b3f29f3655, type: 2}
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 430072594}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: AddCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &447578639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,7 +4041,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 44, y: 44}
+  m_CellSize: {x: 64, y: 64}
   m_Spacing: {x: 8, y: 8}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -9958,6 +9988,10 @@ PrefabInstance:
     - target: {fileID: 8167687660464359162, guid: 5b9b55e904426e44d931072d47a61265, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595227332128958304, guid: 5b9b55e904426e44d931072d47a61265, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -30.300781
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

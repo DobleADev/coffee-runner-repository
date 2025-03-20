@@ -21,7 +21,7 @@ public class PreparationPowerupsUIItem : UIItem
     void Equip(bool equip)
     {
         powerupOwned.isEquipped = equip;
-        _nameLabel.text = powerupOwned.statusEffect.effectName;
+        _nameLabel.text = powerupOwned.statusEffect.effectName + " LV." + powerupOwned.statusEffect.level;
         _quantityLabel.text = (powerupOwned.quantity - (powerupOwned.isEquipped ? 1 : 0)).ToString();
         _equippedGraphic.SetActive(powerupOwned.isEquipped);
     }

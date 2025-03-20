@@ -11,6 +11,7 @@ public class TemperatureChangeStatusEffectSO : StatusUpgradableEffectProperty
     private float GetTemperature(float entityTemperature) => basePercentage ? (entityTemperature * _upgrades.Value(level) * 0.01f) : _upgrades.Value(level);
     private float GetCondition(float entityTemperature) => basePercentage ? (entityTemperature * condition * 0.01f) : condition;
     public override FloatUpgradable upgrades { get => _upgrades; set => _upgrades = value; }
+    public override string effectName => "Temperature Change";
     public override void Apply(PlayerController player)
     {
         float playerTemperature = player.Temperature;

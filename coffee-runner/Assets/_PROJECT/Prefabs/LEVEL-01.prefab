@@ -42139,10 +42139,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.5
@@ -42186,43 +42182,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 8460697702434355430}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
---- !u!1 &3700155001340555695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 489639214831485588}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8460697702434355430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700155001340555695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3700155001340555695}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &8915712272537531118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
@@ -42550,10 +42511,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 71
@@ -42597,43 +42554,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 4182027897179801162}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
---- !u!1 &1363746133550639246 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 2845963773027621813}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4182027897179801162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363746133550639246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1363746133550639246}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &6489565771400768463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
@@ -42775,10 +42697,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 75.5
@@ -42822,43 +42740,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 912337964398499367}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
---- !u!1 &1941104083867401726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 3414349716485426885}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &912337964398499367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941104083867401726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1941104083867401726}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &5914142945442840255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
@@ -42938,10 +42821,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 128
@@ -42985,43 +42864,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3291891156379043904}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
---- !u!1 &524925633042404941 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 3664507389200393590}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3291891156379043904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524925633042404941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 524925633042404941}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &5740830964624659724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
@@ -43225,10 +43069,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 108
@@ -43272,48 +43112,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3150521485287083993}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &4438049506897970245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 4676543828903146559}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8463513633471137540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 4676543828903146559}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3150521485287083993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8463513633471137540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8463513633471137540}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &4971169672386852182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43325,10 +43130,6 @@ PrefabInstance:
     - target: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_Name
       value: Coin (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43373,48 +43174,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 324786514952292445}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &4146778606468678956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 4971169672386852182}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8173821536964707949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 4971169672386852182}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &324786514952292445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8173821536964707949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8173821536964707949}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &5366692141922937660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43489,10 +43255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.5
@@ -43536,48 +43298,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3085808843120809223}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &4029659162496495196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 5376538183998709286}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9155633208970784029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 5376538183998709286}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3085808843120809223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9155633208970784029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9155633208970784029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &5508412333753151236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43589,10 +43316,6 @@ PrefabInstance:
     - target: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_Name
       value: Coin (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43637,48 +43360,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3953690297056680673}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &3531027182575804286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 5508412333753151236}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8783097680425688127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 5508412333753151236}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3953690297056680673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783097680425688127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8783097680425688127}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &5681795019129969845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43877,10 +43565,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 136.5
@@ -43924,48 +43608,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3737930270472871532}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &1750518356543283795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 7294250836270600745}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5812028799028125970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 7294250836270600745}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3737930270472871532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812028799028125970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5812028799028125970}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &7466679172498233742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44288,10 +43937,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    - target: {fileID: 7381612171176172602, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -44335,45 +43980,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1669259696549413822}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
 --- !u!4 &156134153772175810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9039134941485559930, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
   m_PrefabInstance: {fileID: 9177146888774017464}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5389081842573693571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860177633805873979, guid: 2b00a20e378602a45b9bb198ec897740, type: 3}
-  m_PrefabInstance: {fileID: 9177146888774017464}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1669259696549413822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5389081842573693571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4dcb66db749732478ca66e12a0e0a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5389081842573693571}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

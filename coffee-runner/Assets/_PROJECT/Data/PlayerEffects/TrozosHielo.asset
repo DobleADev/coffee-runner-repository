@@ -16,7 +16,7 @@ MonoBehaviour:
   description: reduce la temperatura de golpe y aplica un efecto de - 10% en la velocidad
     durante 3 segundos
   type: 0
-  level: 1
+  _level: 1
   maxLevel: 1
   duration:
     _baseValue: 3

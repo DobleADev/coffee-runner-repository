@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: TermometroSpeedBoostEffectProperty
   m_EditorClassIdentifier: 
   _level: 1
-  basePercentage: 0
+  basePercentage: 1
   _upgrades:
     _baseValue: 10
-    _upgrades: []
+    _upgrades:
+    - setting: 5
+      percentage: 0
+    - setting: 10
+      percentage: 0

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class LevelFinishedUIManager : MonoBehaviour
 {
     [SerializeField] Text _collectedCoinsText;
+    public int coinsCollected { get; set; }
 
     void OnEnable()
     {
@@ -12,6 +13,6 @@ public class LevelFinishedUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        _collectedCoinsText.text = GameDataManager.instance.coins.ToString();
+        _collectedCoinsText.text = coinsCollected.ToString();
     }
 }

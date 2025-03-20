@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8d52718e3b8fb4891de730a6dde0f3, type: 3}
-  m_Name: CapsulaDeCafe
+  m_Name: BrisitaMananera
   m_EditorClassIdentifier: 
   price: 1
   thumbnail: {fileID: 0}
-  powerup: {fileID: 11400000, guid: 77caeea069991404da1a9e84675d55be, type: 2}
+  powerup: {fileID: 11400000, guid: 3fba6cf906a679b44bf8e009053aa520, type: 2}
+  onlyUpgreadable: 1
   upgradePrice:
     _baseValue: 1
     _upgrades:

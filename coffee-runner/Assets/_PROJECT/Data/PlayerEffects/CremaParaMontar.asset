@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Crema Para Montar
   description: reduce ligeramente la temperatura de golpe
   type: 0
-  level: 1
+  _level: 1
   maxLevel: 1
   duration:
     _baseValue: 10

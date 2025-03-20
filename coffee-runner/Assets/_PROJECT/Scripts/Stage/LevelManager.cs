@@ -7,10 +7,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] LevelReferenceSO _currentLevel;
     [SerializeField] PlayerEffectUIManager _playerEffectUIManager;
     [SerializeField] GameOverUIManager _gameOverUIManager;
+    [SerializeField] LevelFinishedUIManager _levelFinishedUIManager;
     [SerializeField] UnityEvent _onErrorLevelLoading;
     [SerializeField] UnityEvent _onSuccessfullLevelLoading;
     PlayerController _player;
     LevelController _levelInstance;
+    private int _coinsCollected = 0;
+    public void AddCoin() { _coinsCollected ++; }
+    public void ResetCoins() { _coinsCollected = 0; }
 
     public void InstanceLevel()
     {
@@ -31,6 +35,7 @@ public class LevelManager : MonoBehaviour
         }
         
         _levelInstance = Instantiate(_currentLevel.level.prefab);
+        ResetCoins();
         _onSuccessfullLevelLoading?.Invoke();
     }
 
@@ -78,11 +83,13 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        _levelFinishedUIManager.coinsCollected = _coinsCollected;
         GameDataManager.instance.CompleteLevel(_currentLevel.level.levelName);
     }
 
     public void UpdateGameOverData()
     {
+        _gameOverUIManager.coinsCollected = _coinsCollected;
         _gameOverUIManager.playerPosition = _player.transform.position;
         _gameOverUIManager.startPosition = _levelInstance.start.transform.position;
         _gameOverUIManager.endPosition = _levelInstance.end.position;

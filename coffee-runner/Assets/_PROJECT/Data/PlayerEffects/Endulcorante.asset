@@ -16,7 +16,7 @@ MonoBehaviour:
   description: aumenta la temperatura de golpe, en menor grado que la cafeina, y
     aumenta ligeramente la velocidad durante 10 segundos
   type: 0
-  level: 1
+  _level: 1
   maxLevel: 1
   duration:
     _baseValue: 10

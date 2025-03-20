@@ -15,3 +15,10 @@ MonoBehaviour:
   price: 2
   thumbnail: {fileID: 0}
   powerup: {fileID: 11400000, guid: 586b1f8ca259d214d813cbd7f9cca55b, type: 2}
+  upgradePrice:
+    _baseValue: 1
+    _upgrades:
+    - setting: 1
+      percentage: 0
+    - setting: 2
+      percentage: 0

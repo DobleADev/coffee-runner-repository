@@ -10,6 +10,7 @@ public class GameOverUIManager : MonoBehaviour
     public Vector3 startPosition { get; set; }
     public Vector3 endPosition { get; set; }
     public Vector3 playerPosition { get; set; }
+    public int coinsCollected { get; set; }
 
     public void UpdateUI()
     {
@@ -19,6 +20,6 @@ public class GameOverUIManager : MonoBehaviour
 
         _mettersTravelled.text = (playerPosition.x - startPosition.x).ToString("N1") + "m";
         _mettersRemaining.text = (endPosition.x - playerPosition.x).ToString("N1") + "m";
-        _collectedCoinsText.text = GameDataManager.instance.coins.ToString();
+        _collectedCoinsText.text = coinsCollected.ToString();
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
     es caliente, digase > 10, agarra el exedente de la temperatura caliente y la
     reduce a la mitad
   type: 0
-  level: 1
+  _level: 1
   maxLevel: 1
   duration:
     _baseValue: 0

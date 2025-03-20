@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8d52718e3b8fb4891de730a6dde0f3, type: 3}
-  m_Name: CapsulaDeCafe
+  m_Name: Termometro
   m_EditorClassIdentifier: 
   price: 1
   thumbnail: {fileID: 0}
-  powerup: {fileID: 11400000, guid: 77caeea069991404da1a9e84675d55be, type: 2}
+  powerup: {fileID: 11400000, guid: 24884de91b2a1194ea17835898ae8a85, type: 2}
+  onlyUpgreadable: 1
   upgradePrice:
-    _baseValue: 1
+    _baseValue: 2
     _upgrades:
     - setting: 2
       percentage: 0
-    - setting: 3
+    - setting: 1
       percentage: 0

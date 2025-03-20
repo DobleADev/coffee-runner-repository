@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShopProductsUICollection : UICollection<ShopProductsUIItem>
+public abstract class ShopProductsUICollection : UICollection<ShopProductsUIItem>
 {
-    [SerializeField] List<ShopProductSO> _products;
-    [SerializeField] UnityEvent _onPurchase;
+    [SerializeField] protected List<ShopProductSO> _products;
+    [SerializeField] protected UnityEvent _onPurchase;
 
     protected override int GetItemsCount()
     {
@@ -14,13 +14,12 @@ public class ShopProductsUICollection : UICollection<ShopProductsUIItem>
 
     protected override void AddItem(ShopProductsUIItem item, int index)
     {
-        var product = _products[index];
-        item.Setup(product, GameDataManager.instance.coins, () => Purchase(product));
-        // item.OnClickEvent += () => Purchase(_products[index]);
+        SetupItem(item, _products[index]);
     }
 
+    protected abstract void SetupItem(ShopProductsUIItem item, ShopProductSO product);
 
-    void UpdateProductsState()
+    protected void UpdateProductsState()
     {
         int coins = GameDataManager.instance.coins;
         for (int i = 0; i < _items.Count; i++)
@@ -29,7 +28,7 @@ public class ShopProductsUICollection : UICollection<ShopProductsUIItem>
         }
     }
 
-    void Purchase(ShopProductSO product)
+    protected void Purchase(ShopProductSO product)
     {
         try
         {
@@ -38,21 +37,19 @@ public class ShopProductsUICollection : UICollection<ShopProductsUIItem>
             if (money >= product.price)
             {
                 GameDataManager.instance.coins -= product.price;
-                if (product is PowerupsShopProductsSO powerup)
-                {
-                    GameDataManager.instance.AddOwnedPowerup(powerup.powerup);
-                }
+                HandlePurchase(product);
             }
         }
         catch (System.Exception)
         {
             throw;
         }
-        
+
         UpdateProductsState();
         _onPurchase?.Invoke();
     }
 
+    protected abstract void HandlePurchase(ShopProductSO product);
 }
 
 public abstract class ShopProductSO : ScriptableObject

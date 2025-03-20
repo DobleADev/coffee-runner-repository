@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-        Debug.Log(effect.effectName + " removed");
+        // Debug.Log(effect.effectName + " removed");
 
         foreach (var effectData in effect.properties)
         {

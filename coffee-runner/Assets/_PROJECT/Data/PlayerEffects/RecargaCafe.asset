@@ -16,7 +16,7 @@ MonoBehaviour:
   description: reestablece la temperatura al punto neutro pero tambien quita todos
     los efectos actuales (incluyendo el de la capsula de cafe y excluyendo los comprados)
   type: 0
-  level: 1
+  _level: 1
   maxLevel: 1
   duration:
     _baseValue: 0
