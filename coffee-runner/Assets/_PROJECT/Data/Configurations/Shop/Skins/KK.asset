@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2262305b7daca0d479113c9d50294399, type: 3}
-  m_Name: Blue
+  m_Name: KK
   m_EditorClassIdentifier: 
-  price: 3
+  price: 1
   thumbnail: {fileID: 0}
-  prefab: {fileID: 678566176712205703, guid: 8a145ccfaaa1e8f4a8d170d9dfbac03b, type: 3}
+  prefab: {fileID: 678566176712205703, guid: 7194db88ed3d5304d96c1be4159470a3, type: 3}

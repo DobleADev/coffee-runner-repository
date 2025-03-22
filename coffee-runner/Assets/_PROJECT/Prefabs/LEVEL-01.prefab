@@ -39673,8 +39673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fea58c8d6e31243a6eb189338509c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 8400944967657083627, guid: f26f10df8d0ba13498dbc110499f0d23, type: 3}
-  _positionOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6480402360831839903
 GameObject:
   m_ObjectHideFlags: 0

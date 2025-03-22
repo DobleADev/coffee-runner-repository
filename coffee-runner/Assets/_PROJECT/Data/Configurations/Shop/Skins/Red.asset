@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2262305b7daca0d479113c9d50294399, type: 3}
   m_Name: Red
   m_EditorClassIdentifier: 
-  price: 0
+  price: 2
   thumbnail: {fileID: 0}
   prefab: {fileID: 678566176712205703, guid: 1b4e38a4ee8322f428fa332c449ef61c, type: 3}

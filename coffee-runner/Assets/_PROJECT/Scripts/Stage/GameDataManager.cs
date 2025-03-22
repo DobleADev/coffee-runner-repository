@@ -95,4 +95,9 @@ public class GameDataManager : MonoBehaviour
     {
         return _powerups.Count;
     }
+
+    public void AddOwnedPrefab(GameObject prefab)
+    {
+        ownedSkins.Add(prefab);
+    }
 }

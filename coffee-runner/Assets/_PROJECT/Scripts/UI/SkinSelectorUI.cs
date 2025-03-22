@@ -9,6 +9,7 @@ public class SkinSelectorUI : MonoBehaviour
     [SerializeField] TMP_Text _skinNameLabel;
     [SerializeField] Image _skinPreview;
     [SerializeField] Button _equipButton;
+    [SerializeField] TMP_Text _equipButtonLabel;
     List<GameObject> _skins = new List<GameObject>();
     int _currentIndex = 0;
 
@@ -24,7 +25,19 @@ public class SkinSelectorUI : MonoBehaviour
     void CheckSkinEquipped()
     {
         var currentSkin = GameDataManager.instance.currentPlayerSkin;
-        _equipButton.interactable = !(currentSkin == null && _skins[_currentIndex] == _defaultSkin) && _skins[_currentIndex] != currentSkin;
+        // FIX LATER
+        bool isNotEquipped = !(currentSkin == null && _skins[_currentIndex] == _defaultSkin) && _skins[_currentIndex] != currentSkin;
+
+        if (isNotEquipped)
+        {
+            _equipButtonLabel.text = "Equip";
+            _equipButton.interactable = true;
+        }
+        else
+        {
+            _equipButtonLabel.text = "Equipped";
+            _equipButton.interactable = false;
+        }
     }
 
     public void UpdateSkinList()

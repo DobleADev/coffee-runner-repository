@@ -242,6 +242,7 @@ MonoBehaviour:
   _skinNameLabel: {fileID: 2035026841}
   _skinPreview: {fileID: 378862078}
   _equipButton: {fileID: 1109790025}
+  _equipButtonLabel: {fileID: 1396981294}
 --- !u!114 &64167512
 MonoBehaviour:
   m_ObjectHideFlags: 0
