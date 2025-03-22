@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewPlayerStatusEffect", menuName = "Scriptable Objects/Player Status Effect")]
 public class PlayerStatusEffectSO : ScriptableObject
 {
-    [SerializeField] private string _effectName;
-    public string effectName;
+    [SerializeField, FormerlySerializedAs("effectName")] private string _effectName;
+    public string effectName { get => _effectName + " Lv." + _level; }
     [TextArea] public string description;
     public EffectType type;
     [SerializeField, Min(1)] private int _level = 1;

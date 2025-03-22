@@ -9,6 +9,8 @@ public class GameDataManager : MonoBehaviour
     public int premiumCoins;
     public List<LevelProgressData> levelProgress = new List<LevelProgressData>();  
     public List<WorldProgressData> worldProgress = new List<WorldProgressData>();  
+    public GameObject currentPlayerSkin;
+    public List<GameObject> ownedSkins;
     [SerializeField] List<PlayerStatusEffectOwned> _powerups = new List<PlayerStatusEffectOwned>();  
 
     void Awake()
@@ -22,7 +24,6 @@ public class GameDataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
 
     public void CompleteLevel(string levelName)
@@ -42,7 +43,6 @@ public class GameDataManager : MonoBehaviour
     {
         return levelProgress.FirstOrDefault(level => level.levelName == levelName);
     }
-
 
     public WorldProgressData GetWorldProgress(string worldName)
     {

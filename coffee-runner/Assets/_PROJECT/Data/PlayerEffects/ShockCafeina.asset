@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: ShockCafeina
   m_EditorClassIdentifier: 
-  effectName: Shock de Cafeina
+  _effectName: Shock de Cafeina
   description: aumenta la temperatura de golpe y aumenta la velocidad de movimiento
     durante 6 segundos
   type: 0

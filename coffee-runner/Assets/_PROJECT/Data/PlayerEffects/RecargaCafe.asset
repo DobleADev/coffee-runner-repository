@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: RecargaCafe
   m_EditorClassIdentifier: 
-  effectName: Recarga de Cafe
+  _effectName: Recarga de Cafe
   description: reestablece la temperatura al punto neutro pero tambien quita todos
     los efectos actuales (incluyendo el de la capsula de cafe y excluyendo los comprados)
   type: 0

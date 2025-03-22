@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: GotasRon
   m_EditorClassIdentifier: 
-  effectName: Gotas de Ron
+  _effectName: Gotas de Ron
   description: gotas de ron, aumenta la temperatura y otorga un escudo contra obstaculos
     bajos que absorve 1 impacto durante 10 segundos
   type: 0

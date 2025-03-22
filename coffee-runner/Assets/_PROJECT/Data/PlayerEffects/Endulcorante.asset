@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: Endulcorante
   m_EditorClassIdentifier: 
-  effectName: Endulcorante
+  _effectName: Endulcorante
   description: aumenta la temperatura de golpe, en menor grado que la cafeina, y
     aumenta ligeramente la velocidad durante 10 segundos
   type: 0

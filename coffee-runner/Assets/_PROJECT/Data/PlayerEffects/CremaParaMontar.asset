@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: CremaParaMontar
   m_EditorClassIdentifier: 
-  effectName: Crema Para Montar
+  _effectName: Crema Para Montar
   description: reduce ligeramente la temperatura de golpe
   type: 0
   _level: 1

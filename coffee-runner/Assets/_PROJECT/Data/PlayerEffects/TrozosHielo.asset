@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: TrozosHielo
   m_EditorClassIdentifier: 
-  effectName: Trozos de Hielo
+  _effectName: Trozos de Hielo
   description: reduce la temperatura de golpe y aplica un efecto de - 10% en la velocidad
     durante 3 segundos
   type: 0

@@ -1,13 +1,18 @@
 using UnityEngine;
 
-public abstract class ObstacleBase : MonoBehaviour
+public abstract class ObstacleBase : MonoBehaviour, IInteractable<PlayerController>
 {
-    void OnTriggerEnter2D(Collider2D other)
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.TryGetComponent(out PlayerController player))
+    //     {
+    //         OnPlayerCrash(player);
+    //     }
+    // }
+
+    public virtual void Interact(PlayerController interactor)
     {
-        if (other.TryGetComponent(out PlayerController player))
-        {
-            OnPlayerCrash(player);
-        }
+        OnPlayerCrash(interactor);
     }
 
     protected virtual void OnPlayerCrash(PlayerController player) { }

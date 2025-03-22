@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: PastillaEfervescente
   m_EditorClassIdentifier: 
-  effectName: Pastilla Efervescente
+  _effectName: Pastilla Efervescente
   description: reduce la temperatura significativamente, si la temperatura actual
     es caliente, digase > 10, agarra el exedente de la temperatura caliente y la
     reduce a la mitad

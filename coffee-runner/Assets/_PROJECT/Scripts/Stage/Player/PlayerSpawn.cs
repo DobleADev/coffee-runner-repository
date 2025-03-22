@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    [SerializeField] PlayerController _playerPrefab;
-    [SerializeField] Vector3 _positionOffset;
-    
-    public PlayerController Spawn()
+
+    public void Spawn(GameObject player)
     {
-        var newPlayer = Instantiate(_playerPrefab);
-        newPlayer.transform.position = transform.position + _positionOffset;
-        return newPlayer;
+        // var newPlayer = Instantiate(player);
+        player.transform.position = transform.position;
+        // return newPlayer;
     }
 }

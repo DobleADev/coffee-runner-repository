@@ -36,7 +36,7 @@ public class PowerupShopProductsUIDetails : MonoBehaviour
         if (_currentProduct == null) return;
 
         bool maxLevel = _currentProduct.powerup.level >= _currentProduct.powerup.maxLevel;
-        _nameLabel.text = _currentProduct.GetName() + " Lv." + _currentProduct.powerup.level;
+        _nameLabel.text = _currentProduct.GetName();
         _upgradeDetailsText.text = _currentProduct.powerup.GetUpgradeDescription();
         _buyButton.interactable = money >= _currentProduct.price;
         _upgradeButton.interactable = money >= _currentProduct.upgradePrice.Value(_currentProduct.powerup.level) && !maxLevel;

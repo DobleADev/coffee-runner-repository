@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: HeatZone
   m_EditorClassIdentifier: 
-  effectName: Zona fria
+  _effectName: Zona fria
   description: 
   type: 1
   _level: 1

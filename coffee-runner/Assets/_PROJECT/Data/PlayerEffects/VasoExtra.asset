@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: VasoExtra
   m_EditorClassIdentifier: 
-  effectName: Vaso Extra
+  _effectName: Vaso Extra
   description: durante 10 segundos, si sufre un accidente en el que se pueda derramar,
     tendra una segunda oportunidad gratuita que se aplica automaticamente
   type: 0

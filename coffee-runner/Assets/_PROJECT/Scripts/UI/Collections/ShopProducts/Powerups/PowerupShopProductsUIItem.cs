@@ -26,7 +26,7 @@ public class PowerupShopProductsUIItem : ShopProductsUIItem
 
     public override void UpdateState(ShopProductSO product, int money)
     {
-        _nameLabel.text = product.GetName() + " Lv." + _powerupProduct.powerup.level;
+        _nameLabel.text = product.GetName();
         _priceLabel.text = "Buy $" + product.price.ToString();
         if (product.thumbnail != null) _thumbnailImage.sprite = product.thumbnail;
         _buyButton.interactable = money >= product.price;

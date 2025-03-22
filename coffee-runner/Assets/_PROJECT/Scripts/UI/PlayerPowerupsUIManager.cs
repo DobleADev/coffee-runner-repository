@@ -7,7 +7,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
     public PlayerStatusEffectContainerSO availablePowerUps; // List of all equippable power-ups
     public PlayerStatusEffectContainerSO powerups; // Scriptable object for equipped power-ups
 
-    public GameObject powerUpButtonPrefab; // Prefab for equippable power-up buttons
+    public PlayerPowerupsUIItem powerUpButtonPrefab; // Prefab for equippable power-up buttons
     public Transform powerUpListContent; // Parent transform for the equippable power-up list
 
     public GameObject equippedPowerUpButtonPrefab; // Prefab for equipped power-up buttons
@@ -37,8 +37,8 @@ public class PlayerPowerupsUIManager : MonoBehaviour
     {
         foreach (var powerUp in availablePowerUps.powerups)
         {
-            GameObject buttonObj = Instantiate(powerUpButtonPrefab, powerUpListContent);
-            PlayerPowerupsUIItem button = buttonObj.GetComponent<PlayerPowerupsUIItem>();
+            var button = Instantiate(powerUpButtonPrefab, powerUpListContent);
+            // PlayerPowerupsUIItem button = buttonObj.GetComponent<PlayerPowerupsUIItem>();
             button.SetEquippedStatus(powerups.powerups.Contains(powerUp)); // Set initial status
             button.SetUp(powerUp);
             button.OnPowerUpSelected += ShowPowerUpDetails;
@@ -54,7 +54,7 @@ public class PlayerPowerupsUIManager : MonoBehaviour
 
     public void UpdatePowerUpDetails()
     {
-        powerUpNameText.text = selectedPowerUp.effectName + "\nLv. " + selectedPowerUp.level;
+        powerUpNameText.text = selectedPowerUp.effectName;
         powerUpDescriptionText.text = selectedPowerUp.description;
         // powerUpDurationText.text = "Duration: " + powerUp.duration;
         levelUpButton.interactable = selectedPowerUp.level < selectedPowerUp.maxLevel;

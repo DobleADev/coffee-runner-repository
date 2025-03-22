@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] PlayerController _playerPrefab;
+    [SerializeField] GameObject _defaultSkinPrefab;
     [SerializeField] LevelReferenceSO _currentLevel;
     [SerializeField] PlayerEffectUIManager _playerEffectUIManager;
     [SerializeField] GameOverUIManager _gameOverUIManager;
@@ -46,11 +48,26 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        //Destroy old player
         if (_player != null)
         {
             Destroy(_player.gameObject);
         }
-        _player = _levelInstance.start.Spawn();
+
+        //INSTANTIATE PLAYER HERE :')
+        _player = Instantiate(_playerPrefab);
+        var skinPrefab = GameDataManager.instance.currentPlayerSkin;
+        if (skinPrefab != null)
+        {
+            Instantiate(skinPrefab, _player.transform);
+        }
+        else
+        {
+            Instantiate(_defaultSkinPrefab, _player.transform);
+        }
+        _levelInstance.start.Spawn(_player.gameObject);
+
+
         var levelEffects = _currentLevel.level.prefab.EnvironmentDefaultEffects;
         for (int i = 0; i < levelEffects.Count; i++)
         {

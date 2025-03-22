@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53287f569213298478004535a4e2dd0d, type: 3}
   m_Name: CorazaTermoTermico
   m_EditorClassIdentifier: 
-  effectName: Coraza de Termo Termico
+  _effectName: Coraza de Termo Termico
   description: paraliza la temperatura durante 5 segundos y reduce la velocidad de
     movimiento en 15%)
   type: 0
