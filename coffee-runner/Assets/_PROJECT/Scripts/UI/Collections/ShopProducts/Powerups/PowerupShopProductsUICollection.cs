@@ -11,6 +11,7 @@ public class PowerupShopProductsUICollection : ShopProductsUICollection
             powerupItem.Setup(
                 powerupProduct,
                 GameDataManager.instance.coins,
+                GameDataManager.instance.premiumCoins,
                 () => Purchase(powerupProduct),
                 () => Upgrade(powerupProduct),
                 () => ShowDetails(powerupProduct)

@@ -10,21 +10,22 @@ public class PowerupShopProductsUIItem : ShopProductsUIItem
     [SerializeField] Button _infoButton; // Botón de información
     private PowerupsShopProductsSO _powerupProduct;
 
-    public void Setup(PowerupsShopProductsSO product, int money, UnityAction buyCall, UnityAction upgradeCall, UnityAction infoCall)
+    public void Setup(PowerupsShopProductsSO product, int money, int premiumMoney, UnityAction buyCall, UnityAction upgradeCall, UnityAction infoCall)
     {
         _powerupProduct = product;
         _upgradeButton.onClick.AddListener(upgradeCall);
         _infoButton.onClick.AddListener(infoCall); // Añadir listener al botón de información
-        Setup(product, money, buyCall);
+        UpdateState(product, money, premiumMoney);
+        _buyButton.onClick.AddListener(buyCall);
     }
 
     public override void Setup(ShopProductSO product, int money, UnityAction buyCall)
     {
-        UpdateState(product, money);
+        // UpdateState(product, money, premiumMoney);
         _buyButton.onClick.AddListener(buyCall);
     }
 
-    public override void UpdateState(ShopProductSO product, int money)
+    public override void UpdateState(ShopProductSO product, int money, int premiumMoney)
     {
         _nameLabel.text = product.GetName();
         _priceLabel.text = "Buy $" + product.price.ToString();

@@ -22,9 +22,10 @@ public abstract class ShopProductsUICollection : UICollection<ShopProductsUIItem
     protected void UpdateProductsState()
     {
         int coins = GameDataManager.instance.coins;
+        int premiumCoins = GameDataManager.instance.premiumCoins;
         for (int i = 0; i < _items.Count; i++)
         {
-            _items[i].UpdateState(_products[i], coins);
+            _items[i].UpdateState(_products[i], coins, premiumCoins);
         }
     }
 
@@ -32,12 +33,36 @@ public abstract class ShopProductsUICollection : UICollection<ShopProductsUIItem
     {
         try
         {
-            int money = GameDataManager.instance.coins;
-
-            if (money >= product.price)
+            if (product.price == 0)
             {
-                GameDataManager.instance.coins -= product.price;
                 HandlePurchase(product);
+            }
+            else
+            {
+                switch (product.currencyType)
+                {
+                    case CurrencyType.Coins:
+                        if (GameDataManager.instance.coins >= product.price)
+                        {
+                            GameDataManager.instance.coins -= product.price;
+                            HandlePurchase(product);
+                        }
+                        break;
+                    case CurrencyType.PremiumCoins:
+                        if (GameDataManager.instance.premiumCoins >= product.price)
+                        {
+                            GameDataManager.instance.premiumCoins -= product.price;
+                            HandlePurchase(product);
+                        }
+                        break;
+                    case CurrencyType.RealMoney:
+                        // Lógica para compras con dinero real (e.g., IAP)
+                        HandleRealMoneyPurchase(product);
+                        break;
+                    default:
+                        Debug.LogError("Tipo de moneda no soportado.");
+                        break;
+                }
             }
         }
         catch (System.Exception)
@@ -48,13 +73,25 @@ public abstract class ShopProductsUICollection : UICollection<ShopProductsUIItem
         UpdateProductsState();
         _onPurchase?.Invoke();
     }
-
+    protected virtual void HandleRealMoneyPurchase(ShopProductSO product)
+    {
+        // Implementación predeterminada para compras con dinero real (puedes sobreescribirla en clases derivadas)
+        Debug.LogWarning("Compra con dinero real no implementada.");
+    }
     protected abstract void HandlePurchase(ShopProductSO product);
 }
 
 public abstract class ShopProductSO : ScriptableObject
 {
     public int price;
+    public CurrencyType currencyType;
     public Sprite thumbnail;
     public abstract string GetName();
+}
+
+public enum CurrencyType
+{
+    Coins,
+    PremiumCoins,
+    RealMoney
 }

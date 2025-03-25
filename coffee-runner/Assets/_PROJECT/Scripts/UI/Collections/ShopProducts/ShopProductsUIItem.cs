@@ -11,5 +11,5 @@ public abstract class ShopProductsUIItem : UIItem
     [SerializeField] protected Button _buyButton;
 
     public abstract void Setup(ShopProductSO product, int money, UnityAction buyCall);
-    public abstract void UpdateState(ShopProductSO product, int money);
+    public abstract void UpdateState(ShopProductSO product, int money = 0, int premiumMoney = 0);
 }

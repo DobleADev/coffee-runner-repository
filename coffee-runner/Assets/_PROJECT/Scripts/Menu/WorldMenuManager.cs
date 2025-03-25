@@ -40,17 +40,17 @@ public class WorldMenuManager : MonoBehaviour
             if (i > 0)
             {
                 // Previous Level data
-                var worldData = GameDataManager.instance.GetWorldProgress(_worlds[i-1].worldName);
-                bool locked = true;
-                if (worldData != null)
-                {
-                    if (worldData.completed)
-                    {
-                        locked = false;
-                    }
-                }
+                // var worldData = GameDataManager.instance.isWorldCompleted(_worlds[i-1].worldName);
+                // bool locked = true;
+                // if (worldData != null)
+                // {
+                //     if (worldData.completed)
+                //     {
+                //         locked = false;
+                //     }
+                // }
 
-                worldItem.SetLock(locked);
+                worldItem.SetLock(!GameDataManager.instance.isWorldCompleted(_worlds[i-1]));
             }
             _items.Add(worldItem.gameObject);
         }

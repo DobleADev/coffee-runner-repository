@@ -11,6 +11,7 @@ public class PrefabShopProductsUICollection : ShopProductsUICollection
             prefabItem.Setup(
                 prefabProduct,
                 GameDataManager.instance.coins,
+                GameDataManager.instance.premiumCoins,
                 () => Purchase(prefabProduct),
                 () => ShowDetails(prefabProduct)  // Añadido el delegado para mostrar detalles
             );

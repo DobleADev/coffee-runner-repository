@@ -213,9 +213,9 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 8
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -1461,6 +1461,7 @@ MonoBehaviour:
   levelProgress: []
   worldProgress: []
   currentPlayerSkin: {fileID: 0}
+  ownedSkins: []
   _powerups: []
 --- !u!4 &416413577
 Transform:
@@ -2284,6 +2285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 541208469}
   - component: {fileID: 541208472}
+  - component: {fileID: 541208476}
   - component: {fileID: 541208475}
   - component: {fileID: 541208474}
   - component: {fileID: 541208471}
@@ -2311,11 +2313,11 @@ RectTransform:
   - {fileID: 1537359211}
   m_Father: {fileID: 242230083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195.965, y: -91.350006}
-  m_SizeDelta: {x: 383.93, y: 182.70001}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 182.70001}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &541208470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,7 +2409,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 541208476}
+        m_TargetAssemblyTypeName: UICollection`1[[ShopProductsUIItem, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &541208475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541208468}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f37a307d2f07914dbb0a9c4f2664a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 2379217112483143330, guid: 3c0326b6b6c8cca4da42e2d4f005b86c, type: 3}
+  _parent: {fileID: 1080084866}
+  _items: []
+  _equippedPowerups: {fileID: 11400000, guid: 7bf6bf10d8cd50642b0460d6eb4c14a5, type: 2}
+--- !u!114 &541208476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2416,12 +2446,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 541208468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f37a307d2f07914dbb0a9c4f2664a2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4054639d59ad53541905b8d4c0283f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2379217112483143330, guid: 3c0326b6b6c8cca4da42e2d4f005b86c, type: 3}
+  _prefab: {fileID: 480114083310076689, guid: 3c0326b6b6c8cca4da42e2d4f005b86c, type: 3}
   _parent: {fileID: 1080084866}
   _items: []
+  _products:
+  - {fileID: 11400000, guid: 239b020ee859ea14d979bba16ae59dcd, type: 2}
+  - {fileID: 11400000, guid: ffe74249473ff5346bc916dea354743f, type: 2}
+  - {fileID: 11400000, guid: 6141aa89c2ed22c4cb1acbfd9e4691af, type: 2}
+  - {fileID: 11400000, guid: 884146b9e490d1b4bafa69c54641b0f8, type: 2}
+  - {fileID: 11400000, guid: 07a6ed2f7df93264eb5ecbf20629b015, type: 2}
+  - {fileID: 11400000, guid: 4139cd40059986641964f21bfcc586ab, type: 2}
+  - {fileID: 11400000, guid: ffc48074313734a40a89b92866d18c78, type: 2}
+  _onPurchase:
+    m_PersistentCalls:
+      m_Calls: []
   _equippedPowerups: {fileID: 11400000, guid: 7bf6bf10d8cd50642b0460d6eb4c14a5, type: 2}
 --- !u!224 &550142051 stripped
 RectTransform:
@@ -6772,8 +6813,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307.94165, y: -23}
-  m_SizeDelta: {x: 103.97666, y: 30}
+  m_AnchoredPosition: {x: 279.94748, y: -28}
+  m_SizeDelta: {x: 72.6, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561278773
 MonoBehaviour:
@@ -7346,7 +7387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1703791585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10031,8 +10072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195.965, y: -28}
-  m_SizeDelta: {x: 103.97666, y: 40}
+  m_AnchoredPosition: {x: 155.665, y: -28}
+  m_SizeDelta: {x: 159.965, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102664703
 MonoBehaviour:

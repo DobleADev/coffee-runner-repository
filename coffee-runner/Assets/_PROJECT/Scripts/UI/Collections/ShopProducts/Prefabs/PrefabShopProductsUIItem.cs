@@ -9,19 +9,20 @@ public class PrefabShopProductsUIItem : ShopProductsUIItem
 
     // No necesitas _upgradePriceLabel ni _upgradeButton porque las skins no se mejoran.
 
-    public void Setup(PrefabShopProductSO product, int money, UnityAction buyCall, UnityAction infoCall) // Añadido el parámetro infoCall
+    public void Setup(PrefabShopProductSO product, int money, int premiumMoney, UnityAction buyCall, UnityAction infoCall) // Añadido el parámetro infoCall
     {
         _infoButton.onClick.AddListener(infoCall); // Añadir listener al botón de información
-        Setup(product, money, buyCall);  // Llama al Setup base para configurar el botón de compra.
+        UpdateState(product, money, premiumMoney);  // Llama al Setup base para configurar el botón de compra.
+        _buyButton.onClick.AddListener(buyCall);
     }
 
     public override void Setup(ShopProductSO product, int money, UnityAction buyCall)
     {
-        UpdateState(product, money); // Luego actualizamos
+        // UpdateState(product, money, premiumMoney); // Luego actualizamos
         _buyButton.onClick.AddListener(buyCall);
     }
 
-    public override void UpdateState(ShopProductSO product, int money)
+    public override void UpdateState(ShopProductSO product, int money, int premiumMoney)
     {
         _nameLabel.text = product.GetName();
         _priceLabel.text = "Buy $" + product.price.ToString();

@@ -7,6 +7,7 @@ public class PowerupShopProductsUIDetails : MonoBehaviour
 {
     [SerializeField] private Image _demonstrationImage; // O VideoPlayer
     [SerializeField] protected TMP_Text _nameLabel;
+    [SerializeField] private TMP_Text _quantityText;
     [SerializeField] private TMP_Text _descriptionText;
     [SerializeField] private TMP_Text _upgradeDetailsText;
     [SerializeField] protected TMP_Text _priceLabel;
@@ -37,6 +38,8 @@ public class PowerupShopProductsUIDetails : MonoBehaviour
 
         bool maxLevel = _currentProduct.powerup.level >= _currentProduct.powerup.maxLevel;
         _nameLabel.text = _currentProduct.GetName();
+        var ownedPowerup = GameDataManager.instance.GetOwnedPowerup(_currentProduct.powerup);
+        _quantityText.text = ownedPowerup == null ? "You have: 0" : "You have: " + ownedPowerup.quantity.ToString();
         _upgradeDetailsText.text = _currentProduct.powerup.GetUpgradeDescription();
         _buyButton.interactable = money >= _currentProduct.price;
         _upgradeButton.interactable = money >= _currentProduct.upgradePrice.Value(_currentProduct.powerup.level) && !maxLevel;

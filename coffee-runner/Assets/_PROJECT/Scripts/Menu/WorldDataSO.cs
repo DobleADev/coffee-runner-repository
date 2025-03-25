@@ -16,4 +16,5 @@ public class WorldDataSO : ScriptableObject
         starsRequired = data.starsRequired;
         levels = data.levels;
     }
+
 }

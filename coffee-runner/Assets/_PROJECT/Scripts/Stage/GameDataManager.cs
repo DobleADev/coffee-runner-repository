@@ -8,7 +8,7 @@ public class GameDataManager : MonoBehaviour
     public int coins;
     public int premiumCoins;
     public List<LevelProgressData> levelProgress = new List<LevelProgressData>();  
-    public List<WorldProgressData> worldProgress = new List<WorldProgressData>();  
+    // public List<WorldProgressData> worldProgress = new List<WorldProgressData>();  
     public GameObject currentPlayerSkin;
     public List<GameObject> ownedSkins;
     [SerializeField] List<PlayerStatusEffectOwned> _powerups = new List<PlayerStatusEffectOwned>();  
@@ -44,9 +44,35 @@ public class GameDataManager : MonoBehaviour
         return levelProgress.FirstOrDefault(level => level.levelName == levelName);
     }
 
-    public WorldProgressData GetWorldProgress(string worldName)
+    // public WorldProgressData GetWorldProgress(string worldName)
+    // {
+    //     return worldProgress.FirstOrDefault(world => world.worldName == worldName);
+    // }
+
+    public bool isWorldCompleted(WorldDataSO world)
     {
-        return worldProgress.FirstOrDefault(world => world.worldName == worldName);
+        bool completed = true;
+        foreach (var level in world.levels)
+        {
+            var worldLevel = levelProgress.Find(levelProgress => levelProgress.levelName == level.levelName);
+            if (worldLevel == null)
+            {
+                completed = false;
+                break;
+            }
+            
+            if (!worldLevel.completed)
+            {
+                completed = false;
+                break;
+            }
+            // if (!level.isCompleted())
+            // {
+            //     completed = false;
+            //     break;
+            // }
+        }
+        return completed;
     }
 
     public void AddOwnedPowerup(PlayerStatusEffectSO powerup)
@@ -89,6 +115,11 @@ public class GameDataManager : MonoBehaviour
     public PlayerStatusEffectOwned GetOwnedPowerup(int index)
     {
         return _powerups[index];
+    }
+
+    public PlayerStatusEffectOwned GetOwnedPowerup(PlayerStatusEffectSO powerup)
+    {
+        return _powerups.Find(ownedPowerup => ownedPowerup.statusEffect == powerup);
     }
 
     public int GetOwnedPowerupsCount()
