@@ -11,6 +11,7 @@ public class PreparationPowerupShopProductsUICollection : ShopProductsUICollecti
             preparationItem.Setup(
                 powerupProduct,
                 GameDataManager.instance.coins,
+                GameDataManager.instance.premiumCoins,
                 () => HandleAction(powerupProduct)
             );
         }
