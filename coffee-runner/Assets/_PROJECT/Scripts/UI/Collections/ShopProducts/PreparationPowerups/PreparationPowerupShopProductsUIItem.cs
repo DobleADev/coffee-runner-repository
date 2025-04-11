@@ -52,6 +52,6 @@ public class PreparationPowerupShopProductsUIItem : ShopProductsUIItem
         }
         
         _equippedGraphic.SetActive(ownedPowerup.isEquipped);
-        Debug.Log("UPDATED");
+        // Debug.Log("UPDATED");
     }
 }
